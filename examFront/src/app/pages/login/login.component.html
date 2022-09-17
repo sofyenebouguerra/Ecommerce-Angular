@@ -7,16 +7,19 @@
                 <img src="../../../assets/log.jpg" alt="">
             </div>
             <h1 class="text-center">Login here!!</h1>
-            <form action="">
+           
+            <form (ngSubmit)="formSubmit()">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>User Name</mat-label>
-                    <input name="username"  matInput placeholder="Enter here" required>
+                    <input [(ngModel)]="loginData.username"
+                    name="username"  matInput placeholder="Enter here" required>
                     <mat-hint>Valid User Name</mat-hint>
                   </mat-form-field>
 
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>User Password</mat-label>
-                    <input type="password" name="password"  matInput placeholder="Enter here" required>
+                    <input [(ngModel)]="loginData.password"
+                     type="password" name="password"  matInput placeholder="Enter here" required>
                   </mat-form-field>
                   <div class="container text-center">
                       <button mat-raised-button color="primary" type="submit" >Login</button>

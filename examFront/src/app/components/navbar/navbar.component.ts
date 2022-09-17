@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn=false;
+  
+  user:any=null;
 
-  constructor() { }
+  constructor(public login :LoginService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.isLoggedIn=this.login.isLoggedIn();
+    this.user=this.login.getUser();
+    this.login.loginStatusSubject.asObservable().subscribe(data=>{
+      this.isLoggedIn=this.login.isLoggedIn();
+      this.user=this.login.getUser();
+    });
+  
   }
+
+public logout(){
+  this.login.logout();
+  window.location.reload();
+  //this.login.loginStatusSubject.next(false);
+
+}
 
 }

@@ -18,6 +18,14 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { authInterceptorProviders } from './services/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import {MatListModule} from '@angular/material/list';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +33,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    UserDashboardComponent,
+    ProfileComponent,
+    SidebarComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +52,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     HttpClientModule,
     FormsModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule,
+    MatListModule
     
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
