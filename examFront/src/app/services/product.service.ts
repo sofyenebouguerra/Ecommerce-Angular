@@ -12,4 +12,7 @@ export class ProductService {
   public addProduct(product:FormData){
     return this.http.post<Product>(`${baseUrl}/product/`,product);
   }
+  public getAllProducts(){
+    return this.http.get<Product[]>(`${baseUrl}/product/GetAll`)
+  }
 }

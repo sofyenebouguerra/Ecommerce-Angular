@@ -1,3 +1,4 @@
+import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -27,6 +28,12 @@ const routes: Routes = [
     {
       path:'add-product',component:AddNewProductComponent
     },
+
+    {
+      path:'show-product',component:ShowProductDetailComponent
+    },
+
+
   ] },
   { path:'user-dashboard',component:UserDashboardComponent,pathMatch:'full',canActivate:[NormalGuard],},
  

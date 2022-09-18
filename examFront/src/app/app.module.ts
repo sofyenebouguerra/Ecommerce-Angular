@@ -29,6 +29,8 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DragDirective } from './models/drag.directive';
+import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { DragDirective } from './models/drag.directive';
     WelcomeComponent,
     AddNewProductComponent,
     DragDirective,
+    ShowProductDetailComponent,
   
   ],
   imports: [
@@ -62,7 +65,8 @@ import { DragDirective } from './models/drag.directive';
     MatToolbarModule,
     MatSnackBarModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
     
   ],
   providers: [authInterceptorProviders],
