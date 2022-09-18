@@ -12,7 +12,7 @@ public user={
   username:'',
   password:'',
   firstname:'',
-  lastname:'',
+  lastName:'',
   email:'',
   phone:'',
 

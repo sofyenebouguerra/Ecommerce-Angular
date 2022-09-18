@@ -1,3 +1,4 @@
+import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NormalGuard } from './services/normal.guard';
@@ -22,6 +23,9 @@ const routes: Routes = [
 
     {
       path:'profile',component:ProfileComponent
+    },
+    {
+      path:'add-product',component:AddNewProductComponent
     },
   ] },
   { path:'user-dashboard',component:UserDashboardComponent,pathMatch:'full',canActivate:[NormalGuard],},
