@@ -1,7 +1,11 @@
+import { ImageProcessingService } from './../../../services/image-processing.service';
+import { ShowProductImagesDialogueComponent } from './../show-product-images-dialogue/show-product-images-dialogue.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-show-product-detail',
@@ -11,16 +15,20 @@ import { Product } from 'src/app/models/product.model';
 export class ShowProductDetailComponent implements OnInit {
 
 productDetails:Product[]=[];
-displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Product Discount Price', 'Product Actual Price'];
+displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Product Discount Price', 'Product Actual Price','Images','Edit','Delete'];
 
-  constructor(private ProductService:ProductService) { }
+  constructor(private ProductService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService) { }
 
   ngOnInit(): void {
-    this.getAllProducts()
-  }
+    this.getAllProducts() }
 
   public getAllProducts(){
-    this.ProductService.getAllProducts().subscribe((resp:Product[])=>
+    this.ProductService.getAllProducts()
+    .pipe(
+      map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
+    )
+    
+    .subscribe((resp:Product[])=>
     {
       console.log(resp);
       this.productDetails=resp;
@@ -28,6 +36,27 @@ displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Produ
       console.log(error);
     }
     )
+  }
+
+  deleteProduct(productId){
+this.ProductService.deleteProduct(productId).subscribe(
+  (resp)=>{
+    //console.log(resp);
+    this.getAllProducts();
+  },(error:HttpErrorResponse)=>{
+    console.log(error);
+  }
+)
+  }
+  showImages(product:Product){
+ console.log(product);
+ this.imagesDialog.open(ShowProductImagesDialogueComponent),{
+   data:{
+     images:product.productImages
+   },
+   height:'500px',
+   width:'800px'
+ };
   }
 
 }
