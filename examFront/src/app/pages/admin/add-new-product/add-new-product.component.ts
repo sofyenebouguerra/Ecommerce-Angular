@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-new-product',
@@ -25,13 +27,14 @@ export class AddNewProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addProduct(productForm){
+  addProduct(productForm:NgForm){
 
     const productformData=this.prepareFormData(this.product);
     //console.log(this.product)
     this.productService.addProduct(productformData).subscribe((data:Product)=>{
       //console.log(data);
       productForm.reset();
+      this.product.productImages=[];
     },
     (error: HttpErrorResponse) => {
         console.log(error);
@@ -67,6 +70,13 @@ for(var i=0;i<product.productImages.length;i++){
    
   }
   
-}
+    }
 
+    removeImages(i:number){
+      this.product.productImages.splice(i,1);
+  
+    }  
+    fileDropped(fileHandle:FileHandle){
+      this.product.productImages.push(fileHandle);
+    }
 }
