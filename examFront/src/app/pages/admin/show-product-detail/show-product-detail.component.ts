@@ -1,5 +1,5 @@
 import { ImageProcessingService } from './../../../services/image-processing.service';
-import { ShowProductImagesDialogueComponent } from './../show-product-images-dialogue/show-product-images-dialogue.component';
+
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,17 +25,18 @@ displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Produ
   public getAllProducts(){
     this.ProductService.getAllProducts()
     .pipe(
-      map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
+     map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
     )
     
     .subscribe((resp:Product[])=>
     {
       console.log(resp);
       this.productDetails=resp;
+    
     },(error:HttpErrorResponse)=>{
       console.log(error);
     }
-    )
+    );
   }
 
   deleteProduct(productId){
@@ -50,13 +51,18 @@ this.ProductService.deleteProduct(productId).subscribe(
   }
   showImages(product:Product){
  console.log(product);
- this.imagesDialog.open(ShowProductImagesDialogueComponent),{
+ this.imagesDialog.open(ShowProductDetailComponent),{
    data:{
-     images:product.productImages
-   },
-   height:'500px',
-   width:'800px'
+    images:product.productImages
+   
+ },
+
+   height:'200px',
+   width:'300px'
+   
  };
+ 
   }
+  
 
 }

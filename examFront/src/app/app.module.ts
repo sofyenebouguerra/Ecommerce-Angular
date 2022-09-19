@@ -31,8 +31,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { DragDirective } from './models/drag.directive';
 import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import {MatTableModule} from '@angular/material/table';
-import { ShowProductImagesDialogueComponent } from './pages/admin/show-product-images-dialogue/show-product-images-dialogue.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddNewProductComponent,
     DragDirective,
     ShowProductDetailComponent,
-    ShowProductImagesDialogueComponent,
+    ShowProDialogComponent,
+    
   
   ],
   imports: [
