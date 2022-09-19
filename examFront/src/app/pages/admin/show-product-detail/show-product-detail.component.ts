@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs';
+import { ShowProDialogComponent } from '../show-pro-dialog/show-pro-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-product-detail',
@@ -17,7 +19,7 @@ export class ShowProductDetailComponent implements OnInit {
 productDetails:Product[]=[];
 displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Product Discount Price', 'Product Actual Price','Images','Edit','Delete'];
 
-  constructor(private ProductService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService) { }
+  constructor(private ProductService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllProducts() }
@@ -51,17 +53,24 @@ this.ProductService.deleteProduct(productId).subscribe(
   }
   showImages(product:Product){
  console.log(product);
- this.imagesDialog.open(ShowProductDetailComponent),{
+ this.imagesDialog.open(ShowProDialogComponent,{
    data:{
     images:product.productImages
+     
+    
    
  },
 
-   height:'200px',
-   width:'300px'
+   height:'500px',
+   width:'800px'
    
- };
+ });
  
+  }
+
+  //edit
+  editeProduct(productId){
+ this.router.navigate(['/add-product',{productId:productId}]);
   }
   
 
