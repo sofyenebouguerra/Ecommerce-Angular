@@ -1,9 +1,11 @@
+import { SafeUrl } from '@angular/platform-browser';
 import { ImageProcessingService } from './image-processing.service';
 import { ProductService } from './product.service';
 import { map, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Product } from '../models/product.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,7 @@ getProductDetails(){
     productDescription: "",
     productDiscountPrice: 0,
     productActualPrice: 0,
-    productImages:[]=[],
+    productImages:[]=[]
 
   };
 }

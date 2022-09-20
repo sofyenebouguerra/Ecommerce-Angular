@@ -20,7 +20,7 @@ const routes: Routes = [
   { path:'login',component:LoginComponent,pathMatch:'full'},
   { path:'admin',component:DashboardComponent,canActivate:[AdminGuard],children:[
     {
-      path:'',component:WelcomeComponent
+      path:'',component:HomeComponent
     },
 
     {

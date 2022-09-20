@@ -11,11 +11,22 @@
 
 
     <div class="container mt-5">
-      <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
+      <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
         <mat-grid-tile *ngFor="let p of productDetails">
-          <div class="row">
-            <img [src]="p.productImages[0].url" alt="">
-          
+          <div class="row homme-page-product-image" >
+            <img [src]="p?.productImages[0]?.url" alt="">
+            <div>
+            <p><b>{{p.productName}}</b></p>
+          </div>
+          <div class="mt-2">
+            <p style="white-space: inherit;height:40px;width: 288px;overflow: hidden; text-overflow:ellipsis; ">{{p.productDescription}}</p>
+          </div>
+          <div class="mt-2">
+            <p><b>{{p.productActualPrice}}</b> &nbsp; <b style="text-decoration: line-through">{{p.productDiscountPrice}} </b></p>
+          </div>
+          <div class="mt-2">
+            <button type="button" mat-raised-button color="warn">View Details</button>
+          </div>
           </div>
         </mat-grid-tile>
 

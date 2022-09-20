@@ -38,9 +38,9 @@ isNewProduct=true;
   }
   addProduct(productForm:NgForm){
 
-    const productformData=this.prepareFormData(this.product);
+    const productFormData=this.prepareFormData(this.product);
     //console.log(this.product)
-    this.productService.addProduct(productformData).subscribe((data:Product)=>{
+    this.productService.addProduct(productFormData).subscribe((response:Product)=>{
       //console.log(data);
       productForm.reset();
       this.product.productImages=[];

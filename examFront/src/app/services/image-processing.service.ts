@@ -34,13 +34,13 @@ export class ImageProcessingService {
   public dataURItoBlob(picBytes,imageType){
     const byteString=window.atob(picBytes);
     const arrayBuffer=new ArrayBuffer(byteString.length);
-    const int8array = new Uint8Array(arrayBuffer);
+    const int8Array = new Uint8Array(arrayBuffer);
 
     for(let i=0;i<byteString.length;i++){
       Int8Array[i]=byteString.charCodeAt(i);
     }
 
-    const blob=new Blob([int8array],{type: imageType});
+    const blob=new Blob([int8Array],{type: imageType});
     return blob;
   }
 

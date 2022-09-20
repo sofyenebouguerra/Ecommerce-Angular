@@ -28,7 +28,7 @@ displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Produ
   public getAllProducts(){
     this.productService.getAllProducts()
     .pipe(
-     map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
+     map((x:Product[],i) => x.map((product:Product)=>this.imageProcessingService.createImages(product)))
     )
     
     .subscribe((resp:Product[])=>
