@@ -1,6 +1,8 @@
-import { Observable } from 'rxjs';
+import { ImageProcessingService } from './image-processing.service';
+import { ProductService } from './product.service';
+import { map, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -8,20 +10,33 @@ import { Product } from '../models/product.model';
 })
 export class ProductResolveService implements Resolve<Product> {
 
-  constructor() { }
+  constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<Product> {
 const id=route.paramMap.get("productId");
 
 if(id){
 //then we have to fetch deatails from backend
+return this.productService.getProductDetailsById(id)
+.pipe(
+  map(p=> this.imageProcessingService.createImages(p))
+);
 
-      }  
-
-  }else{
+      }else{
 //return empty product obsrvable
+return of(this.getProductDetails());
   }
-
-
 }
+getProductDetails(){
+  return{
+    productId:null,
+    productName: "",
+    productDescription: "",
+    productDiscountPrice: 0,
+    productActualPrice: 0,
+    productImages:[]=[],
+
+  };
+}
+
 
 }

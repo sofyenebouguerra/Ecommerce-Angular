@@ -1,3 +1,4 @@
+import { FileHandle } from './../../../models/file-handle.model';
 import { ImageProcessingService } from './../../../services/image-processing.service';
 
 import { HttpErrorResponse } from '@angular/common/http';
@@ -5,7 +6,7 @@ import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
-import { map } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ShowProDialogComponent } from '../show-pro-dialog/show-pro-dialog.component';
 import { Router } from '@angular/router';
 
@@ -19,13 +20,13 @@ export class ShowProductDetailComponent implements OnInit {
 productDetails:Product[]=[];
 displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Product Discount Price', 'Product Actual Price','Images','Edit','Delete'];
 
-  constructor(private ProductService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService,private router:Router) { }
+  constructor(private productService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService,private router:Router ) { }
 
   ngOnInit(): void {
     this.getAllProducts() }
 
   public getAllProducts(){
-    this.ProductService.getAllProducts()
+    this.productService.getAllProducts()
     .pipe(
      map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
     )
@@ -42,7 +43,7 @@ displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Produ
   }
 
   deleteProduct(productId){
-this.ProductService.deleteProduct(productId).subscribe(
+this.productService.deleteProduct(productId).subscribe(
   (resp)=>{
     //console.log(resp);
     this.getAllProducts();
@@ -70,7 +71,7 @@ this.ProductService.deleteProduct(productId).subscribe(
 
   //edit
   editeProduct(productId){
- this.router.navigate(['/add-product',{productId:productId}]);
+ this.router.navigate(['/admin/add-product',{productId:productId}]);
   }
   
 

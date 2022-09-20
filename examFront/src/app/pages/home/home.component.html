@@ -1,4 +1,4 @@
-<div class="bootstrap-wrapper">
+<!--<div class="bootstrap-wrapper">
     <div class="container" >
       <div class="row mt20" >
         <div class="col-md-6 offset-md-3 text-center">
@@ -7,4 +7,17 @@
             </div>
             </div>
         </div>
-    </div>
+    </div>-->
+
+
+    <div class="container mt-5">
+      <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
+        <mat-grid-tile *ngFor="let p of productDetails">
+          <div class="row">
+            <img [src]="p.productImages[0].url" alt="">
+          
+          </div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </div> 

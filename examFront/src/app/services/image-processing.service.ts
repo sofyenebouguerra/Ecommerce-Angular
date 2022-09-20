@@ -8,11 +8,14 @@ import { Product } from '../models/product.model';
 })
 export class ImageProcessingService {
 
+
   constructor(private sanitizer:DomSanitizer) { }
 
   public createImages(product:Product){
     const productImages:any[] =product.productImages;
+
     const productImagesToFileHandle:FileHandle[] =[];
+
     for(let i=0;i<productImages.length;i++){
       const imageFileData=productImages[i];
 

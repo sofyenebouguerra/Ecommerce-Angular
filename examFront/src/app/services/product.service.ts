@@ -15,6 +15,10 @@ export class ProductService {
   public getAllProducts(){
     return this.http.get<Product[]>(`${baseUrl}/product/GetAll`)
   }
+  public getProductDetailsById (productId){
+    return this.http.get<Product>(`${baseUrl}/product/GetOne/`+productId);
+  }
+
   public deleteProduct(productId:number){
     return this.http.delete(`${baseUrl}/product/DelPro/`+productId);
   }

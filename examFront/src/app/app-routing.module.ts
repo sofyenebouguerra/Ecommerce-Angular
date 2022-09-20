@@ -1,3 +1,4 @@
+import { ProductResolveService } from './services/product-resolve.service';
 import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
@@ -26,7 +27,9 @@ const routes: Routes = [
       path:'profile',component:ProfileComponent
     },
     {
-      path:'add-product',component:AddNewProductComponent
+      path:'add-product',component:AddNewProductComponent,resolve:{
+        product:ProductResolveService
+      }
     },
 
     {
@@ -35,7 +38,7 @@ const routes: Routes = [
 
 
   ] },
-  { path:'user-dashboard',component:UserDashboardComponent,pathMatch:'full',canActivate:[NormalGuard],},
+  { path:'user-dashboard',component:UserDashboardComponent,canActivate:[NormalGuard]},
  
  
 ];

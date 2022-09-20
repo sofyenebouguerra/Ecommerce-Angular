@@ -7,6 +7,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,17 +16,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-new-product.component.css']
 })
 export class AddNewProductComponent implements OnInit {
+isNewProduct=true;
 
   product:Product={
+    productId:null,
     productName: '',
     productDescription: '',
     productDiscountPrice: 0,
     productActualPrice: 0,
     productImages: []
   }
-  constructor(private productService:ProductService,private sanitizer:DomSanitizer) { }
+  constructor(private productService:ProductService,private sanitizer:DomSanitizer,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+   this.product= this.activatedRoute.snapshot.data['product'];
+    if(this.product && this.product.productId){
+      this.isNewProduct=false;
+    }
+
+
   }
   addProduct(productForm:NgForm){
 
