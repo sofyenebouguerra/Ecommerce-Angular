@@ -62,7 +62,7 @@ export class ProduitService {
 
   exportToPdf(){
     alert("ok pdf service");
-  return this.http.get(`${this.baseUrl}/Jasper/report`);
+  return this.http.get(`${this.baseUrl}/Jasper/report`,{responseType: 'text'});
   }
 
   getExcelData(){
