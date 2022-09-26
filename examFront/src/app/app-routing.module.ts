@@ -1,3 +1,5 @@
+import { ListProductComponent } from './pages/admin/list-product/list-product.component';
+import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
 import { ProductResolveService } from './services/product-resolve.service';
 import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
@@ -15,10 +17,12 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
- 
+
+ { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},
+  { path:'list-proAr',component:ListProductComponent,pathMatch:'full'},
   { path:'signup',component:SignupComponent,pathMatch:'full'},
   { path:'login',component:LoginComponent,pathMatch:'full'},
-  { path:'admin',component:DashboardComponent,canActivate:[AdminGuard],children:[
+  { path:'admin',component:DashboardComponent,children:[
     {
       path:'',component:HomeComponent
     },
@@ -27,7 +31,7 @@ const routes: Routes = [
       path:'profile',component:ProfileComponent
     },
     {
-      path:'add-product',component:AddNewProductComponent,resolve:{
+      path:'add-product',component:AddProduitComponent,resolve:{
         product:ProductResolveService
       }
     },
@@ -38,7 +42,7 @@ const routes: Routes = [
 
 
   ] },
-  { path:'user-dashboard',component:UserDashboardComponent,canActivate:[NormalGuard]},
+  { path:'user-dashboard',component:UserDashboardComponent},
  
  
 ];

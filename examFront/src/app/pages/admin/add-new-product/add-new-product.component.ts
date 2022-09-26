@@ -3,6 +3,7 @@ import { FileHandle } from './../../../models/file-handle.model';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -17,6 +18,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddNewProductComponent implements OnInit {
 isNewProduct=true;
+imgURL: any;
+userFile;
+public imagePath;
 
   product:Product={
     productId:null,
@@ -26,7 +30,7 @@ isNewProduct=true;
     productActualPrice: 0,
     productImages: []
   }
-  constructor(private productService:ProductService,private sanitizer:DomSanitizer,private activatedRoute:ActivatedRoute) { }
+  constructor(private productService:ProductService,private sanitizer:DomSanitizer,private activatedRoute:ActivatedRoute,private toastr:ToastrService) { }
 
   ngOnInit(): void {
    this.product= this.activatedRoute.snapshot.data['product'];
@@ -64,10 +68,14 @@ for(var i=0;i<product.productImages.length;i++){
 }
 
 
-
-  onFileSelected(event){
-    if(event.target.files){
-    const file=  event.target.files[0];
+   onFileSelected(event){
+    /*if(event.target.files){
+      var reader=new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url=event.target.result;
+      }*/
+   const file=  event.target.files[0];
     const fileHandle:FileHandle={
       file:file,
       url: this.sanitizer.bypassSecurityTrustUrl(
@@ -79,7 +87,7 @@ for(var i=0;i<product.productImages.length;i++){
    
   }
   
-    }
+    
 
     removeImages(i:number){
       this.product.productImages.splice(i,1);
@@ -87,5 +95,27 @@ for(var i=0;i<product.productImages.length;i++){
     }  
     fileDropped(fileHandle:FileHandle){
       this.product.productImages.push(fileHandle);
+    }
+
+
+    onSelectFile(event) {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.userFile = file;
+        // this.f['profile'].setValue(file);
+  
+        var mimeType = event.target.files[0].type;
+        if (mimeType.match(/image\/*/) == null) {
+          this.toastr.success('Only images are supported.');
+  
+          return;
+        }
+        var reader = new FileReader();
+        this.imagePath = file;
+        reader.readAsDataURL(file);
+        reader.onload = (_event) => {
+          this.imgURL = reader.result;
+        }
+      }
     }
 }

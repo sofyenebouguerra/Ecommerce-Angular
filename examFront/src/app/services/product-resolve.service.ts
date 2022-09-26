@@ -30,12 +30,12 @@ return of(this.getProductDetails());
 }
 getProductDetails(){
   return{
-    productId:null,
+    productId:0,
     productName: "",
     productDescription: "",
     productDiscountPrice: 0,
     productActualPrice: 0,
-    productImages:[]=[]
+    productImages:[]
 
   };
 }

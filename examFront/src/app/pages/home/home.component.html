@@ -11,20 +11,23 @@
 
 
     <div class="container mt-5">
-      <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
+      <mat-grid-list cols="4" rowHeight="3:4" gutterSize="20">
         <mat-grid-tile *ngFor="let p of productDetails">
           <div class="row homme-page-product-image" >
-            <img [src]="p?.productImages[0]?.url" alt="">
+           <!-- <img [src]="p.productImages[0].url" alt="">-->
+            <img class="card-img-top img-responsive" src = "{{this.crudApi.host+'/Imgproduct/'+p.productId}}" 
+           style = "height :200px;width:200px"
+           alt="">
             <div>
-            <p><b>{{p.productName}}</b></p>
+            <p class="mt-2" ><b>{{p.productName}}</b></p>
           </div>
-          <div class="mt-2">
-            <p style="white-space: inherit;height:40px;width: 288px;overflow: hidden; text-overflow:ellipsis; ">{{p.productDescription}}</p>
+          <div class="mt-2" class="text-center">
+            <p style="white-space: inherit;height:100px;width: 288px;overflow: hidden; text-overflow:ellipsis; ">{{p.productDescription}}</p>
           </div>
-          <div class="mt-2">
+          <div class="mt-2" class="text-center">
             <p><b>{{p.productActualPrice}}</b> &nbsp; <b style="text-decoration: line-through">{{p.productDiscountPrice}} </b></p>
           </div>
-          <div class="mt-2">
+          <div class="mt-2" >
             <button type="button" mat-raised-button color="warn">View Details</button>
           </div>
           </div>
@@ -32,3 +35,4 @@
 
       </mat-grid-list>
     </div> 
+  

@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { ImageProcessingService } from 'src/app/services/image-processing.service';
+import { ProduitService } from 'src/app/services/produit.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   productDetails=[];
   
 
-  constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService) { }
+  constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -21,9 +22,9 @@ export class HomeComponent implements OnInit {
 
 public getAllProducts(){
   this.productService.getAllProducts()
-  .pipe(
+  /*.pipe(
    map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
-  )
+  )*/
   
   .subscribe((resp:Product[])=>
   {

@@ -31,8 +31,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { DragDirective } from './models/drag.directive';
 import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import {MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-dialog.component';
+import { ToastrModule } from 'ngx-toastr';
+import { APP_BASE_HREF } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
+import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +57,8 @@ import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-d
     DragDirective,
     ShowProductDetailComponent,
     ShowProDialogComponent,
-    
+    AddProduitComponent,
+    ListProductComponent
   
   ],
   imports: [
@@ -71,10 +78,14 @@ import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-d
     MatListModule,
     MatGridListModule,
     MatTableModule,
-    MatDialogModule
-    
+    MatDialogModule,
+    ToastrModule.forRoot(),
+    NgxPaginationModule,
+    ReactiveFormsModule,
+ 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
+  { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

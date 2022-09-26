@@ -8,7 +8,8 @@ import { Product } from 'src/app/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { ShowProDialogComponent } from '../show-pro-dialog/show-pro-dialog.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProduitService } from 'src/app/services/produit.service';
 
 @Component({
   selector: 'app-show-product-detail',
@@ -17,13 +18,17 @@ import { Router } from '@angular/router';
 })
 export class ShowProductDetailComponent implements OnInit {
 
-productDetails:Product[]=[];
+productDetails:Product[];
+product:Product;
+productId:number;
 displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Product Discount Price', 'Product Actual Price','Images','Edit','Delete'];
 
-  constructor(private productService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService,private router:Router ) { }
+  constructor(public crudApi: ProduitService ,private _route: ActivatedRoute, private productService:ProductService,public imagesDialog:MatDialog,private imageProcessingService:ImageProcessingService,private router:Router ) { }
 
   ngOnInit(): void {
-    this.getAllProducts() }
+    this.getAllProducts()
+  
+  }
 
   public getAllProducts(){
     this.productService.getAllProducts()
@@ -41,6 +46,13 @@ displayedColumns: string[] = ['Id','Product Name', 'Product Description', 'Produ
     }
     );
   }
+  /*GetOneOroduct(ProductId:number){
+    this.productService.getProductDetailsById(ProductId).subscribe((response:Product)=>
+    {
+      console.log(response);
+      this.product=response;
+    });
+  }*/
 
   deleteProduct(productId){
 this.productService.deleteProduct(productId).subscribe(
@@ -56,8 +68,8 @@ this.productService.deleteProduct(productId).subscribe(
  console.log(product);
  this.imagesDialog.open(ShowProDialogComponent,{
    data:{
-    images:product.productImages
-     
+   // images:product.productImages
+     productId:this.productId,product
     
    
  },

@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <h1>Gestion Produit</h1>
+</mat-toolbar>
+<div style="overflow-y: scroll; height:500px;" class="col-md-12 col-md-offset-2">
+
+    <form [formGroup]="this.crudApi.dataForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="productId" id="id">
+        <div class = "row">
+       
+        <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="productName" id="code" >
+        </div>
+        <div class="form-group col-md-6">
+            <label>Description </label>
+            <input type="text" class="form-control" formControlName="productDescription" id="libelle">
+        </div>
+        <div class="form-group col-md-6">
+            <label>DiscountPrice</label>
+            <input type="text" class="form-control" formControlName="productDiscountPrice" id="pa">
+        </div>
+        <div class="form-group  col-md-6">
+            <label>ActualPrice</label>
+            <input type="text" class="form-control" formControlName="productActualPrice" id="pv">
+        </div>
+    </div>
+        <div class="form-group">
+            <label>File Upload </label>
+            <input type="file" accept="image/*" (change)="onSelectFile($event)">
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+            <a class="btn btn-outline-success" routerLink="/list-proAr"><i class="fa fa-plus-square"></i> Liste</a>
+            
+
+        </div>
+    </form>
+</div>
