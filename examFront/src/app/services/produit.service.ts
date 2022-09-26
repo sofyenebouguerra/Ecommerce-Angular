@@ -1,3 +1,4 @@
+import { ParametreService } from './parametre.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,7 +18,7 @@ export class ProduitService {
   choixmenu: string = 'A';
   list: Product[];
   public dataForm: FormGroup;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private parametreService:ParametreService) { }
   getData(productId: number): Observable<Object> {
     return this.http.get(`${this.baseUrl}/GetOne/${productId}`);
   }
@@ -59,22 +60,23 @@ export class ProduitService {
     return this.http.request(req);
   }
 
- /* getExcelData(){
-    return this.http.get<any>(`${this.baseUrl}/export/excel`, { responseType: 'arraybuffer' as 'json' });
-  }*/
+  getExcelData(){
+    return this.http.get<any>(`${this.baseUrl}/products/export/excel`, { responseType: 'arraybuffer' as 'json' });
+  }
  
 
 
-  /*onselectParametre(id: number) {
+  onselectParametre(id: number) {
     this.parametreService.getData(id).subscribe(
       response => {
         this.parametre = response;
+        console.log(response);
       }
     )
-  }*/
- /* getDocument() {
+  }
+  getDocument() {
 
-    this.onselectParametre(1);
+    this.onselectParametre(2);
     this.getAll().subscribe(
       response => {
         
@@ -121,7 +123,7 @@ export class ProduitService {
           ]
         },
         {
-          text: 'Liste Des Articles',
+          text: 'Liste Des Produits',
           bold: true,
           fontSize: 20,
           alignment: 'center',
@@ -177,43 +179,39 @@ export class ProduitService {
   }
 
 
-  getList(items: Article[]) {
+  getList(items: Product[]) {
     return {
       table: {
         widths: [100, 200, 70, 70, 60, 200],
         body: [
           [{
-            text: 'Code',
+            text: 'Id',
             style: 'tableHeader'
           },
           {
-            text: 'Désignation',
+            text: 'Product Name',
             style: 'tableHeader'
           },
           {
-            text: 'P_Achat',
+            text: 'Product Description',
             style: 'tableHeader'
           },
           {
-            text: 'P_Vente',
+            text: 'Product DiscountPrice',
             style: 'tableHeader'
           },
           {
-            text: 'TVa',
+            text: 'Product ActualPrice',
             style: 'tableHeader'
-          },
-          {
-            text: 'Fournisseur',
-            style: 'tableHeader'
-          },
+          }
           ],
          ...items.map(ed => {
-            return [ed.code, ed.libelle, ed.pa, ed.pv, ed.tva, ed.four];
+            return [ed.productId, ed.productName, ed.productDescription, ed.productDiscountPrice, ed.productActualPrice];
           })
         ]
       }
     };
-  }*/
+  }
 }
 
 

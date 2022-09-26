@@ -10,7 +10,10 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators }
   from '@angular/forms';
 import { ProduitService } from 'src/app/services/produit.service';
 import { Product } from 'src/app/models/product.model';
-
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ParametreService } from 'src/app/services/parametre.service';
+  pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
@@ -26,7 +29,7 @@ export class ListProductComponent implements OnInit {
     private router: Router, public fb: FormBuilder,
     private matDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<AddProduitComponent>,) { }
+    public dialogRef: MatDialogRef<AddProduitComponent>,private parametreService:ParametreService) { }
 
   ngOnInit() {
 
@@ -75,11 +78,11 @@ export class ListProductComponent implements OnInit {
 
   }*/
   exporToExcel() {
-    /*this.crudApi.getExcelData().subscribe((responseMessage) => {
+    this.crudApi.getExcelData().subscribe((responseMessage) => {
       let file = new Blob([responseMessage], { type: 'application/vnd.ms-excel' });
       var fileURL = URL.createObjectURL(file);
       window.open(fileURL);
-    })*/
+    })
    
   }
 
@@ -106,5 +109,14 @@ export class ListProductComponent implements OnInit {
 
     this.matDialog.open(AddProduitComponent, dialogConfig);
   }
+
+  generatePdf()
+{
+  
+ const document = this.crudApi.getDocument();
+ alert("Are you sure");
+ pdfMake.createPdf(document).open(); 
+
+}
 }
 

@@ -39,7 +39,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
-
+import { MomentModule } from 'ngx-moment';
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +83,8 @@ import { ListProductComponent } from './pages/admin/list-product/list-product.co
     ToastrModule.forRoot(),
     NgxPaginationModule,
     ReactiveFormsModule,
- 
+    MomentModule,
+    NgxPayPalModule
   ],
   providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
   { provide: MatDialogRef, useValue: {} }],
