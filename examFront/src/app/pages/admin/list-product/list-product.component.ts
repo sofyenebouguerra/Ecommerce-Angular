@@ -77,6 +77,16 @@ export class ListProductComponent implements OnInit {
     );
 
   }*/
+  exportTPdf() {
+    alert("ok pdf");
+    this.crudApi.exportToPdf().subscribe(responseMessage =>{
+     this.toastr.warning('Edition faite Avec Success');
+   })
+
+  }
+
+
+
   exporToExcel() {
     this.crudApi.getExcelData().subscribe((responseMessage) => {
       let file = new Blob([responseMessage], { type: 'application/vnd.ms-excel' });

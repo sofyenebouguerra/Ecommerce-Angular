@@ -60,6 +60,11 @@ export class ProduitService {
     return this.http.request(req);
   }
 
+  exportToPdf(){
+    alert("ok pdf service");
+  return this.http.get(`${this.baseUrl}/Jasper/report`);
+  }
+
   getExcelData(){
     return this.http.get<any>(`${this.baseUrl}/products/export/excel`, { responseType: 'arraybuffer' as 'json' });
   }
