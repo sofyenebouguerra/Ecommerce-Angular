@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.getAllProducts();
   }
 
-  url: string = "../assets/img1.jpg";
+  url: string = "../assets/6n.jpg";
   
     imageChange(event: any){
         this.url = event.target.src;

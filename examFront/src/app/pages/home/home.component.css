@@ -271,6 +271,12 @@ mat-grid-tile{
 
 
 
+
+
+
+
+
+
 .policy{
 background-image: url(src\assets\policy\bg-policy.jfif); 
 background-size:  cover;
@@ -412,4 +418,15 @@ border-radius: 0 0 4px 4px;}
 }
 .read-more:hover i{
     margin-left:6px;
+}
+
+
+
+
+
+.partners img{
+    transition: all .3s ease;
+}
+.partners img:hover{
+    box-shadow:0 0 10px 1px #dbdbdb;
 }
