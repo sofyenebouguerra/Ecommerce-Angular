@@ -41,6 +41,7 @@ import { AddProduitComponent } from './pages/admin/add-produit/add-produit.compo
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 import { MomentModule } from 'ngx-moment';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +85,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     NgxPaginationModule,
     ReactiveFormsModule,
     MomentModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    CarouselModule
   ],
   providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
   { provide: MatDialogRef, useValue: {} }],

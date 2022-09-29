@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { ImageProcessingService } from 'src/app/services/image-processing.service';
 import { ProduitService } from 'src/app/services/produit.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    //this.getAllProducts();
   }
 
   url: string = "../assets/6n.jpg";
@@ -26,11 +27,84 @@ export class HomeComponent implements OnInit {
         this.url = event.target.src;
     }
 
-public getAllProducts(){
+    partnersArray:any=[
+      {
+        imgName:"../assets/partners/j1.png"
+      },
+      {
+        imgName:"../assets/partners/j2.png"
+      },
+      {
+        imgName:"../assets/partners/j3.png"
+      },
+      {
+        imgName:"../assets/partners/j4.png"
+      },
+      {
+        imgName:"../assets/partners/j5.png"
+      },
+      {
+        imgName:"../assets/partners/tyt.png"
+      },
+    ];
+
+    customOptions: OwlOptions = {
+      loop: false,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 700,
+      navText: ['', ''],
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 2
+        },
+        740: {
+          items: 3
+        },
+        940: {
+          items: 4
+        }
+      },
+      nav: true
+    };
+
+
+    policyOptions: OwlOptions = {
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 700,
+      navText: ['<i class="fa fa-caret-right"></i>', '<i class="fa fa-caret-left"></i>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 2
+        },
+        740: {
+          items: 3
+        },
+        940: {
+          items: 3
+        }
+      },
+      nav: false
+    };
+
+
+/*public getAllProducts(){
   this.productService.getAllProducts()
   /*.pipe(
    map((x:Product[],i)=>x.map((product:Product)=>this.imageProcessingService.createImages(product)))
-  )*/
+  )
   
   .subscribe((resp:Product[])=>
   {
@@ -41,6 +115,6 @@ public getAllProducts(){
     console.log(error);
   }
   );
-}
+}*/
 
 }
