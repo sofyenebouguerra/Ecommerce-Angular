@@ -430,3 +430,53 @@ border-radius: 0 0 4px 4px;}
 .partners img:hover{
     box-shadow:0 0 10px 1px #dbdbdb;
 }
+
+
+
+
+
+.footer-top{
+    padding:50px 0;
+    background: #111;
+}
+.foot-top-menu ul{
+    padding:0;
+    margin:0;
+}
+.footer-top-menu ul li{
+    list-style-type: none;
+    margin-top: 20px;
+    color:rgba(255, 255, 255);
+
+}
+.footer-top-menu ul li i{
+    margin-right: 10px;
+    font-size: 17px;
+}
+.footer-top-menu ul li .heading{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+}
+.footer-top-menu ul li .address{
+ color: #ccc;
+ padding-left: 10px;
+ font-size:15px;
+
+}
+.footer-top-menu ul li .email a{
+    padding-left: 10px;
+    color:#ccc;
+    text-decoration: underline;
+    transition: .3s all ease;
+    font-size: 15px;
+
+}
+.footer-top-menu ul li .email a:hover{
+    padding-left: 10px;
+    color:#ccc;
+    text-decoration: underline;
+    transition: .3s all ease;
+    font-size: 15px;
+
+}

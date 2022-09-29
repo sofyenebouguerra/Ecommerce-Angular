@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+/*html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 background-color:#f5f5f5; }
 section {
@@ -34,7 +34,10 @@ section {
               }
           .mb10{
                 margin-bottom: 10px!important;
-                }      
+                }    */  
+
+
+                
 .policy-product .owl-next,.policy-product .owl-prev{
   background: rgb(158 158 158 / 28%)!important;
   color:#222!important;
