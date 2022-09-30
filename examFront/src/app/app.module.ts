@@ -41,7 +41,9 @@ import { AddProduitComponent } from './pages/admin/add-produit/add-produit.compo
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 import { MomentModule } from 'ngx-moment';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ReactiveFormsModule,
     MomentModule,
     NgxPayPalModule,
-    CarouselModule
+    FontAwesomeModule,
+    CarouselModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
   { provide: MatDialogRef, useValue: {} }],

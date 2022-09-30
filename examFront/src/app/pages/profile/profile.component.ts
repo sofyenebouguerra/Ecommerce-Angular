@@ -1,6 +1,6 @@
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

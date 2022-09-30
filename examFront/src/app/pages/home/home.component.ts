@@ -6,6 +6,7 @@ import { Product } from 'src/app/models/product.model';
 import { ImageProcessingService } from 'src/app/services/image-processing.service';
 import { ProduitService } from 'src/app/services/produit.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
 
   ngOnInit(): void {
+ 
     //this.getAllProducts();
   }
 
@@ -98,6 +100,33 @@ export class HomeComponent implements OnInit {
       },
       nav: false
     };
+
+
+    testimoniaSlider: OwlOptions = {
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 700,
+      navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 2
+        },
+        740: {
+          items: 3
+        },
+        940: {
+          items: 4
+        }
+      },
+      nav: true
+    };
+
 
 
 /*public getAllProducts(){

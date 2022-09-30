@@ -37,6 +37,64 @@
     </div> -->
 
 
+<section class="testimonial">
+  <div class="containers">
+    <ngb-carousel
+    [showNavigationArrows]="true" 
+    [showNavigationIndicators]="true"
+    interval="12000"
+    [keyboard]="true"
+   
+    [activeId]="'secondSlide'"
+    >
+    <ng-template ngbSlide id="firstSlide"><div class="testimonial-image">
+        <img src="../assets/testimonial/a-web-designer.jpg" alt="Testimonial"></div>
+      <div class="testimonial-content">
+        <h2>Sofyene</h2>
+        <h3>Web Designer</h3>
+        <p>
+          It's difficult to find examples of lorem ipsum in use 
+          before Letraset made it popular as a dummy text in the 1960s, although McClintock says 
+          he remembers coming across the lorem ipsum passage in a book of old metal type samples.
+        </p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide id="SecondSlide"><div class="testimonial-image">
+      <img src="../assets/5n.jpg" alt="Testimonial"></div>
+    <div class="testimonial-content">
+      <h2>Selim</h2>
+      <h3>Web Designer</h3>
+      <p>
+        It's difficult to find examples of lorem ipsum in use 
+        before Letraset made it popular as a dummy text in the 1960s, although McClintock says 
+        he remembers coming across the lorem ipsum passage in a book of old metal type samples.
+      </p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide id="ThirdSlide"><div class="testimonial-image">
+    <img src="../assets/7n.jpg" alt="Testimonial"></div>
+  <div class="testimonial-content">
+    <h2>Karim</h2>
+    <h3>Graphics Dzsigner</h3>
+    <p>
+      It's difficult to find examples of lorem ipsum in use 
+      before Letraset made it popular as a dummy text in the 1960s, although McClintock says 
+      he remembers coming across the lorem ipsum passage in a book of old metal type samples.
+    </p>
+  </div>
+</ng-template>
+    </ngb-carousel>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
   <section class="bg-color">
     <div class="containers">
         <div class="title">
@@ -344,10 +402,97 @@
       </ul>
     </div>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-3"></div>
-    <div class="col-md-2"></div>
+    <div class="col-md-3">
+      <div class="footer-all-menu">
+        <h2>My Account</h2>
+        <ul>
+          <li><i class="fa fa-circle"></i>
+          <a href="">Information</a></li>
+          <li><i class="fa fa-circle"></i>
+            <a href="">Order History</a></li>
+            <li><i class="fa fa-circle"></i>
+              <a href="">My Wishlit</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Privacy Policy</a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">Site Map</a></li>
+                  <li><i class="fa fa-circle"></i>
+                  <a href="">Location</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="footer-all-menu">
+        <h2>INFORMATION</h2>
+        <ul>
+          <li><i class="fa fa-circle"></i>
+          <a href="">Cart</a></li>
+          <li><i class="fa fa-circle"></i>
+            <a href="">Product Support</a></li>
+            <li><i class="fa fa-circle"></i>
+              <a href="">PC Setup & Support</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Services </a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">Extended Services Plans</a></li>
+                  <li><i class="fa fa-circle"></i>
+                  <a href="">Order History</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="footer-all-menu">
+        <h2>OUR SERVICES</h2>
+        <ul>
+          <li><i class="fa fa-circle"></i>
+          <a href="">About</a></li>
+          <li><i class="fa fa-circle"></i>
+            <a href="">Shopping Guide</a></li>
+            <li><i class="fa fa-circle"></i>
+              <a href="">Store Location</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Affilates</a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">Customer Poiunter Policy</a></li>
+                  <li><i class="fa fa-circle"></i>
+                  <a href="">News</a></li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>
 </section>
+
+
+<section class="footer-middle">
+  <div class="containers">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Sign up for Our Exclusive Newsletter</h2>
+      </div>
+      <div class="col-md-4">
+        <input type="mail" class="input" placeholder="Email">
+        <button type="button" class="btn"><i class="fa fa-location-arrow"></i></button>
+      </div>
+      <div class="col-md-4">
+        <div class="social text-center">
+          <ul>
+            <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="containers text-center">
+    <p>@ 2022 MSI Designed by <a href="">Creative Developer</a>All Rights Reserved</p>
+  </div>
+</footer>
