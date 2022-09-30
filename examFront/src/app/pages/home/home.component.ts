@@ -1,12 +1,12 @@
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
 import { ImageProcessingService } from 'src/app/services/image-processing.service';
 import { ProduitService } from 'src/app/services/produit.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +14,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomeComponent implements OnInit {
   productDetails=[];
-  
+  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
 
@@ -22,6 +22,22 @@ export class HomeComponent implements OnInit {
  
     //this.getAllProducts();
   }
+
+  prevSlide() {
+    this.carousel.prev();
+  }
+
+  nextSlide() {
+    this.carousel.next();
+  }
+
+  stopSlider() {
+    this.carousel.pause();
+  }
+
+
+
+
 
   url: string = "../assets/6n.jpg";
   

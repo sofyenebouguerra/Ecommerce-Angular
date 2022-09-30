@@ -37,19 +37,51 @@
     </div> -->
 
 
+    <section class="banner">
+      <div class="containers">
+        <ngb-carousel
+        [showNavigationArrows]="true" 
+        [showNavigationIndicators]="true"
+        [keyboard]="true"
+        [activeId]="'firstSlide'"
+       
+        >
+        <ng-template ngbSlide id="firstSlide"><div class="banner-image">
+            <img src="../assets/vbn.jpg" alt="Banner"></div>
+        </ng-template>
+        <ng-template ngbSlide id="secondSlide"><div class="banner-image">
+          <img src="../assets/dde.jpg" alt="Banner"></div>
+      </ng-template>
+      <ng-template ngbSlide id="thirdSlide"><div class="banner-image">
+        <img src="../assets/cvd.jpg" alt="Banner"></div>
+      
+    </ng-template>
+        </ngb-carousel>
+     
+      </div>
+    
+    </section>
+    
+
+
+
+
+
 <section class="testimonial">
   <div class="containers">
     <ngb-carousel
     [showNavigationArrows]="true" 
     [showNavigationIndicators]="true"
-    interval="12000"
+    interval="6000"
     [keyboard]="true"
+    [pauseOnHover]="false"
+    [wrap]="true"
+    [activeId]="'firstSlide'"
    
-    [activeId]="'secondSlide'"
     >
     <ng-template ngbSlide id="firstSlide"><div class="testimonial-image">
-        <img src="../assets/testimonial/a-web-designer.jpg" alt="Testimonial"></div>
-      <div class="testimonial-content">
+        <img src="../assets/policy/sof.JPG" alt="Testimonial"></div>
+      <div class="testimonial-content text-center">
         <h2>Sofyene</h2>
         <h3>Web Designer</h3>
         <p>
@@ -59,8 +91,8 @@
         </p>
       </div>
     </ng-template>
-    <ng-template ngbSlide id="SecondSlide"><div class="testimonial-image">
-      <img src="../assets/5n.jpg" alt="Testimonial"></div>
+    <ng-template ngbSlide id="secondSlide"><div class="testimonial-image">
+      <img src="../assets/testimonial/a-web-designer.jpg" alt="Testimonial"></div>
     <div class="testimonial-content">
       <h2>Selim</h2>
       <h3>Web Designer</h3>
@@ -71,7 +103,7 @@
       </p>
     </div>
   </ng-template>
-  <ng-template ngbSlide id="ThirdSlide"><div class="testimonial-image">
+  <ng-template ngbSlide id="thirdSlide"><div class="testimonial-image">
     <img src="../assets/7n.jpg" alt="Testimonial"></div>
   <div class="testimonial-content">
     <h2>Karim</h2>
@@ -84,15 +116,10 @@
   </div>
 </ng-template>
     </ngb-carousel>
+ 
   </div>
 
 </section>
-
-
-
-
-
-
 
 
   <section class="bg-color">

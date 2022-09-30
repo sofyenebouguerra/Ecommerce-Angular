@@ -16,10 +16,73 @@
 
 
 .testimonial{
-    background-image: url(src\assets\policy\bg-policy.jfif);
+    background-image: url(src\assets\6n.jpg);
     background-size: cover;
-    background-repeat: ;
+    background-repeat:no-repeat;
+    background-position: center;
+    padding:20px 0;
+    position: relative;
 }
+.testimonial-image{
+    width: 110px;
+    height:110px;
+    margin:0 auto;
+}
+.testimonial-image img{
+    border-radius:50%;
+    border:5px solid rgba(255, 255, 255, .1);
+    width:100%;
+    height:100%;
+}
+.testimonial-content h2{
+    font-size: 16px;
+    color:#ff4000;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin:9px 0 .5rem;
+    line-height:1.2px;
+    text-align: center;
+}
+.testimonial-content h3{
+    font-size: 15px;
+    color: #fff;
+    line-height: 16px;
+    margin: 8px 0 10px;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+.testimonial-content p{
+    position: relative;
+    margin: 28px 30% 70px 30%;
+    font-style: italic;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 23px;
+
+}
+.testimonial-content p:before{
+content: '\f10d';
+font-family: FontAwesome;
+position: absolute;
+left: -15%;
+top: -50%;
+font-size: 42px;
+color:rgba(255, 255, 255, .1);
+}
+.testimonial-content p:after{
+content: '\f10e';
+font-family: FontAwesome;
+position: absolute;
+right: -15%;
+bottom:-50%;
+font-size: 42px;
+color:rgba(255, 255, 255, .1);
+}
+
+
+
+
+
 
 
 
