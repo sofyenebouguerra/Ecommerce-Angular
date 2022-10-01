@@ -7,6 +7,7 @@ import { ImageProcessingService } from 'src/app/services/image-processing.servic
 import { ProduitService } from 'src/app/services/produit.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,12 +18,24 @@ export class HomeComponent implements OnInit {
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
-
+ 
   ngOnInit(): void {
  
     //this.getAllProducts();
 
   }
+ 
+  content:string=" [81WH007TFE] Écran 14 HD - Processeur: Intel Celeron N4020 (1,10 GHz up to 2.80 GHz , 4Mo de mémoire cache, Dual-Core) - Système d'exploitation: FreeDos - Mémoire RAM: 4 Go DDR4-2400 - Disque Dur: 1 To HDD - Carte Graphique: Intel UHD Graphics 600 avec Wi-Fi, Bluetooth, 1x USB 2.0, 2x USB 3.2 Gen 1, 1x HDMI 1.4b, 1x prise combinée casque/microphone (3,5 mm) et lecteur de carte - Couleur: Gris - Garantie: 1 an                          Retrait en Magasin ou Livraison Gratuite pour Cet Article";
+
+  id:any;
+  drop(param:any){
+  if(this.id==param){
+    this.id="";
+  }else{
+    this.id=param;
+  }
+  }
+
 
   prevSlide() {
     this.carousel.prev();

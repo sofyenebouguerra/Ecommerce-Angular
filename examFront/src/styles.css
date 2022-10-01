@@ -41,7 +41,7 @@ body{
   background: #eee;
 }
 
-.carousel-control-prev, .carousel-control-next{
+  .carousel-control-prev, .carousel-control-next{
   position: absolute!important;
   background: #ffffff24!important;
   width: 64px!important;
@@ -126,6 +126,83 @@ right:-60px ;
 .banner .carousel-control-next:hover::before , .banner .carousel-control-prev:hover::before{
 background: #ff4000!important;
 }
+
+
+
+
+
+.bg-position{
+  position: relative;
+  margin:inherit;
+ 
+ }
+ .bg-position .carousel-control-next ,.bg-position .carousel-control-prev{
+   width: 110px;
+   height: 110px;
+   position: absolute;
+   top: 50%;
+   transform: translate(-50%,-70%);
+   overflow: hidden;
+   transition: 3s all ease;
+   background: transparent;
+ }
+ .bg-position .carousel-control-next{
+   right: -30px;
+ }
+ .bg-position .carousel-control-prev{
+   left: 6px;
+ }
+ .bg-position .carousel-control-prev::before, .bg-position .carousel-control-next::before {
+ position: absolute;
+ top: 50%;
+ transform: translate(-50% , -50%);
+ width: 110px;
+ height: 110px;
+ background: #ffffff24;
+ content: '';
+ 
+ }
+ 
+ .bg-position .carousel-control-prev::before{
+   left:20px ;
+   }
+   
+ 
+ .bg-position .carousel-control-next::before{
+ right:-60px ;
+ }
+ 
+ .bg-position .carousel-control-next-icon, .bg-position .carousel-control-prev-icon{
+   font-size: 20px;
+   position: absolute;
+   top: 50%;
+   transform: translate(-50% , -50%);
+ }
+ .bg-position .carousel-control-next-icon{
+   right: 0;
+ }
+ .bg-position .carousel-control-next:hover::before , .bg-position .carousel-control-prev:hover::before{
+ background: #1005edec!important;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .policy-product .owl-next,.policy-product .owl-prev{

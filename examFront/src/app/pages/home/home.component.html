@@ -37,6 +37,82 @@
     </div> -->
 
 
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="language">
+              <ul>
+                <li (click)="drop('language')">
+                  English <i class="fa fa-caret-down"></i>
+                  <div class="dropdown" *ngIf="id === 'language'">
+                    <ul>
+                      <li>
+                        English
+                      </li>
+                      <li>
+                      Arabic
+                    </li>
+                    </ul>
+                  </div>
+                </li>
+                <li (click)="drop('currency')" >
+                  USD <i class="fa fa-caret-down"></i>
+                  <div class="dropdown" *ngIf="id === 'currency'">
+                    <ul>
+                      <li>
+                        USD
+                      </li>
+                      <li>
+                      EUR
+                    </li>
+                    <li>
+                      GBR
+                    </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </div>
+          </div>
+          <div class="col-md-8 text-right">
+            <div class="social-menu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" class="login">
+                  Login
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+
     <section class="banner">
         <ngb-carousel
         [showNavigationArrows]="true" 
@@ -103,8 +179,7 @@
           </div>
         </div>
         <p>
-          [81WH007TFE]<br>
-          Écran 14" HD - Processeur: Intel Celeron N4020 (1,10 GHz up to 2.80 GHz , 4Mo de mémoire cache, Dual-Core) - Système d'exploitation: FreeDos - Mémoire RAM: 4 Go DDR4-2400 - Disque Dur: 1 To HDD - Carte Graphique: Intel UHD Graphics 600 avec Wi-Fi, Bluetooth, 1x USB 2.0, 2x USB 3.2 Gen 1, 1x HDMI 1.4b, 1x prise combinée casque/microphone (3,5 mm) et lecteur de carte - Couleur: Gris - Garantie: 1 an                          Retrait en Magasin ou Livraison Gratuite pour Cet Article
+         {{content |custompipe}}
         </p>
         <h3>
           <span class="selling-amount">2000 TND</span>
@@ -115,10 +190,7 @@
           <button type="button" class="main-button">
           <a href="javascript:void(0);"><i class="fa fa-heart"></i></a>
           <a href="javascript:void(0);"><i class="fa fa-search"></i></a>
-
             </button>
-
-
         </div>
       </div>
     </div>
@@ -381,50 +453,154 @@
 <section class="policy-product">
   <div class="containers ">
     <div class="bg-position">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="policy-p-card">
-      <div class="date">
-        <h3>25</h3>
-        <h4>Jun</h4>
-      </div>
-      <div class="policy-img">
-        <img  src="../assets/policy/IMG_0053.jpg" alt="P1">
-      </div>
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
-        <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
-    </div>
-  </div>
-    <div class="col-md-4">
-      <div class="policy-p-card">
-        <div class="date">
-          <h3>26</h3>
-          <h4>Jun</h4>
-        </div>
-        <div class="policy-img">
-          <img  src="../assets/policy/bnc.jpg" alt="P2">
-        </div>
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
-          <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="policy-p-card">
-        <div class="date">
-          <h3>27</h3>
-          <h4>Jun</h4>
-        </div>
-        <div class="policy-img">
-          <img  src="../assets/policy/446.jpg" alt="P3">
-        </div>
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
-          <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
-      </div>
-    </div>
-    </div>
+      <ngb-carousel
+        [showNavigationArrows]="true" 
+        [showNavigationIndicators]="true"
+        [keyboard]="true"
+        [activeId]="'firstSlide'"
+       
+        >
+        <ng-template ngbSlide id="firstSlide">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="policy-p-card">
+              <div class="date">
+                <h3>25</h3>
+                <h4>Jun</h4>
+              </div>
+              <div class="policy-img">
+                <img  src="../assets/policy/IMG_0053.jpg" alt="P1">
+              </div>
+              <h2>Lorem ipsum dolor sit amet</h2>
+              <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+            </div>
+          </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>26</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/bnc.jpg" alt="P2">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>27</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/446.jpg" alt="P3">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide id="secondtSlide">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="policy-p-card">
+              <div class="date">
+                <h3>25</h3>
+                <h4>Jun</h4>
+              </div>
+              <div class="policy-img">
+                <img  src="../assets/policy/IMG_0053.jpg" alt="P1">
+              </div>
+              <h2>Lorem ipsum dolor sit amet</h2>
+              <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+            </div>
+          </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>26</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/bnc.jpg" alt="P2">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>27</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/446.jpg" alt="P3">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide id="thirdSlide">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="policy-p-card">
+              <div class="date">
+                <h3>25</h3>
+                <h4>Jun</h4>
+              </div>
+              <div class="policy-img">
+                <img  src="../assets/policy/IMG_0053.jpg" alt="P1">
+              </div>
+              <h2>Lorem ipsum dolor sit amet</h2>
+              <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+            </div>
+          </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>26</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/bnc.jpg" alt="P2">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="policy-p-card">
+                <div class="date">
+                  <h3>27</h3>
+                  <h4>Jun</h4>
+                </div>
+                <div class="policy-img">
+                  <img  src="../assets/policy/446.jpg" alt="P3">
+                </div>
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content</p>
+                  <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
+              </div>
+            </div>
+            </div>
+        </ng-template>
+        </ngb-carousel>
+
+
     </div>
   </div>
     </section>

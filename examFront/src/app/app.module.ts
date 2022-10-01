@@ -44,6 +44,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustompipePipe } from './custompipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShowProductDetailComponent,
     ShowProDialogComponent,
     AddProduitComponent,
-    ListProductComponent
+    ListProductComponent,
+    CustompipePipe
   
   ],
   imports: [
