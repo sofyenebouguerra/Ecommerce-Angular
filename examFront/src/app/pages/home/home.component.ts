@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  url: string = "../assets/6n.jpg";
+  url: string = "../assets/memeT/1n.jpg";
   
     imageChange(event: any){
         this.url = event.target.src;
