@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
  
     //this.getAllProducts();
+
   }
 
   prevSlide() {
@@ -143,6 +144,28 @@ export class HomeComponent implements OnInit {
       nav: true
     };
 
+    days:any=150;
+    hours:number=1;
+    mins:number=22;
+    secs:number=24;
+
+ x= setInterval(()=>{
+  var futureDate=new Date("Oct 2,2022 01:26:00").getTime();
+      var today=new Date().getTime();
+      var distance= futureDate - today;
+      this.days=Math.floor(distance/(1000*60*60*24));
+      this.hours=Math.floor((distance % (1000 * 60 * 60 *24))/(1000 * 60 * 60));
+      this.mins=Math.floor((distance % (1000 * 60 * 60 ))/(1000*60));
+      this.secs =Math.floor((distance % (1000 * 60))/(1000));
+      if(distance <0){
+        clearInterval(this.x);
+        this.days="Offer Is Expired";
+      }
+ }, 1000)
+
+
+
+  
 
 
 /*public getAllProducts(){
