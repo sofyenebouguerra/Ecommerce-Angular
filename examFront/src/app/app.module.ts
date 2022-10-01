@@ -34,7 +34,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
@@ -45,6 +45,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustompipePipe } from './custompipe.pipe';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
+import { ProductsComponent } from './ecommerce/products/products.component';
+import { OrdersComponent } from './ecommerce/orders/orders.component';
+import { SangleProductComponent } from './ecommerce/sangle-product/sangle-product.component';
+import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
+import { DashboarddComponent } from './dashboardd/dashboardd.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material-module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +73,13 @@ import { CustompipePipe } from './custompipe.pipe';
     ShowProDialogComponent,
     AddProduitComponent,
     ListProductComponent,
-    CustompipePipe
+    CustompipePipe,
+    EcommerceComponent,
+    ProductsComponent,
+    OrdersComponent,
+    SangleProductComponent,
+    ShoppingCartComponent,
+    DashboarddComponent
   
   ],
   imports: [
@@ -92,10 +107,13 @@ import { CustompipePipe } from './custompipe.pipe';
     NgxPayPalModule,
     FontAwesomeModule,
     CarouselModule,
-    NgbModule
+    NgbModule,
+    NoopAnimationsModule,
+    MaterialModule,
   ],
   providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
-  { provide: MatDialogRef, useValue: {} }],
-  bootstrap: [AppComponent]
+  { provide: MatDialogRef, useValue: {} },DatePipe],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

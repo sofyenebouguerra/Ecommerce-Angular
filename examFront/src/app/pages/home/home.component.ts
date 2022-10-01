@@ -3,7 +3,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from 'src/app/models/product.model';
-import { ImageProcessingService } from 'src/app/services/image-processing.service';
+
 import { ProduitService } from 'src/app/services/produit.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   productDetails=[];
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
-  constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService,public crudApi: ProduitService) { }
+  constructor(private productService:ProductService,public crudApi: ProduitService) { }
  
   ngOnInit(): void {
  

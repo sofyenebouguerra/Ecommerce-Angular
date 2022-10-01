@@ -14,9 +14,15 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { CommonModule } from '@angular/common';
+import { DashboarddComponent } from './dashboardd/dashboardd.component';
+
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
+  {  path: 'dashboard',
+   component: DashboarddComponent,
+},
 
  { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},
   { path:'list-proAr',component:ListProductComponent,pathMatch:'full'},
@@ -48,7 +54,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
