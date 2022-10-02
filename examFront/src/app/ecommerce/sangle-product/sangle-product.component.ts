@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +15,7 @@ import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersComponent } from '../orders/orders.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
-import { LoginService } from 'src/app/services/login.service';
+
 
 @Component({
   selector: 'app-sangle-product',
@@ -72,19 +73,17 @@ export class SangleProductComponent implements OnInit {
       this.user=this.loginn.getUser();
       
     });
-    this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
-      this.user = user;
-    })
+   
   }
 
   addToCart(order: ProductOrder, idUser) {
     this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;
     this.productSelected = true;
-    this.cart.name = order.product.name;
-    this.cart.price = order.product.price;
+    this.cart.name = order.product.productName;
+    this.cart.price = order.product.productActualPrice;
     this.cart.quantity = order.quantity;
-    this.cart.pictureUrl = order.product.pictureUrl;
+    //this.cart.pictureUrl = order.product.pictureUrl;
     this.cartService.addCartToUser(this.cart, idUser).subscribe(cart => {
       this.cart = cart;
       this.cartService.saveCartName(this.cart.name);

@@ -52,11 +52,11 @@ export class ProductOrders {
   productOrders: ProductOrder[] = [];
 }
 export interface Product {
-  id: number,
-  description: string,
-  name: string,
-  pictureUrl: string,
-  price: number
+  productId:number,
+  productName:string,
+  productDescription:string,
+  productDiscountPrice:number,
+  productActualPrice:number,
 }
 export interface Tag {
   id: number,

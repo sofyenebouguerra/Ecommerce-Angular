@@ -1,29 +1,127 @@
-
- 
-     <section>
-       <div class="card-deck" style="padding-bottom: 40px;">
-        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products  let i = index;">
-          <div class="card text-center">
-            <div class="card-header" style="background-color: #bdc3c7;">
-              <h4>{{product.productName}} </h4>
-            </div>
+<section class="footer-top">
+    <div class="containers">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="footer-logo">
+            <img src="../assets/partbmg.jpg" alt="Footer-logo">
+        </div>
+        <div class="footer-top-menu">
+          <ul>
+            <li>
+              <i class="fa fa-home"></i>
+              <span class="heading">Address:</span>
+              <span class="address">15 avenue Habib Bourguiba </span>
+            </li>
+            <li>
+            <i class="fa fa-envelope"></i>
+            <span class="heading">Mail Us:</span>
+            <span class="email"><a href="mailto:example@gmail.com" >example@gmail.com</a></span>
+          </li>
+          <li>
+            <i class="fa fa-phone"></i>
+            <span class="heading">Phone:</span>
+            <span class="number">
+              <a href="tel:+216-53-44-88-27">+216-53-44-88-27</a>
+            </span>
+          </li>
+          <li>
+            <a href="">
+            <img src="../assets/payment.jpg" alt="Payment"></a>
+          </li>
+          </ul>
+        </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-all-menu">
+            <h2>My Account</h2>
+            <ul>
+              <li><i class="fa fa-circle"></i>
+              <a href="">Information</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Order History</a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">My Wishlit</a></li>
+                  <li><i class="fa fa-circle"></i>
+                    <a href="">Privacy Policy</a></li>
+                    <li><i class="fa fa-circle"></i>
+                      <a href="">Site Map</a></li>
+                      <li><i class="fa fa-circle"></i>
+                      <a href="">Location</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-all-menu">
+            <h2>INFORMATION</h2>
+            <ul>
+              <li><i class="fa fa-circle"></i>
+              <a href="">Cart</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Product Support</a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">PC Setup & Support</a></li>
+                  <li><i class="fa fa-circle"></i>
+                    <a href="">Services </a></li>
+                    <li><i class="fa fa-circle"></i>
+                      <a href="">Extended Services Plans</a></li>
+                      <li><i class="fa fa-circle"></i>
+                      <a href="">Order History</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-all-menu">
+            <h2>OUR SERVICES</h2>
+            <ul>
+              <li><i class="fa fa-circle"></i>
+              <a href="">About</a></li>
+              <li><i class="fa fa-circle"></i>
+                <a href="">Shopping Guide</a></li>
+                <li><i class="fa fa-circle"></i>
+                  <a href="">Store Location</a></li>
+                  <li><i class="fa fa-circle"></i>
+                    <a href="">Affilates</a></li>
+                    <li><i class="fa fa-circle"></i>
+                      <a href="">Customer Poiunter Policy</a></li>
+                      <li><i class="fa fa-circle"></i>
+                      <a href="">News</a></li>
+            </ul>
+          </div>
+        </div>
     
-            <div class="card-body">
-              <a > <img class="card-img-top img-thumbnail"
-                  style="width: 230px; height: 300px; cursor: pointer;"    alt="image"></a>
-              <h5 class="card-title" id="price">Price = {{product.productActualPrice}} TND<i ></i>
-                <button title="Information" id="btn" (click)=showUndoBtn(i) (click)="productInfo(product.productId)">
-                  <i class="fas fa-info-circle"></i></button>
-                <button title="View" id="btn" > <i class="fas fa-eye-slash"></i></button>
-              </h5>
-             
-                <div class="modal-content">
-                  <span>{{product.productDescription}}</span>
-                </div>
-         
+      </div>
+    </div>
+    </section>
     
+    
+    <section class="footer-middle">
+      <div class="containers">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Sign up for Our Exclusive Newsletter</h2>
+          </div>
+          <div class="col-md-4">
+            <input type="mail" class="input" placeholder="Email">
+            <button type="button" class="btn"><i class="fa fa-location-arrow"></i></button>
+          </div>
+          <div class="col-md-4">
+            <div class="social text-center">
+              <ul>
+                <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+              </ul>
             </div>
           </div>
         </div>
+    
       </div>
     </section>
+    
+    <footer>
+      <div class="containers text-center">
+        <p>@ 2022 MSI Designed by <a href="">Creative Developer</a>All Rights Reserved</p>
+      </div>
+    </footer>

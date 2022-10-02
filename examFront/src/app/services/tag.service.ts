@@ -10,7 +10,7 @@ export class TagService {
   constructor(private http: HttpClient) {}
 
   addTagToProduct(idProduct: number, idTag: number): Observable<Product> {
-    return this.http.post<Product>(`http://localhost:8080/api/addTagToProduct/${idProduct}/${idTag}`, null);
+    return this.http.post<Product>(`http://localhost:8086/api/addTagToProduct/${idProduct}/${idTag}`, null);
   }
 
   deleteTagFormProduct(idProduct: number, idTag: number): Observable<Product> {

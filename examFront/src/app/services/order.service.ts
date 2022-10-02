@@ -28,7 +28,7 @@ export class OrderService {
   }
   set SelectedProductOrder(value: ProductOrder) {
     this.productOrder = value;
-    //this.productOrderSubject.next();
+    this.productOrderSubject.next('true');
   }
 
   get SelectedProductOrder() {
@@ -50,6 +50,6 @@ export class OrderService {
 
   set Total(value: number) {
     this.total = value;
-    this.totalSubject.next(0);
+    this.totalSubject.next('true');
   }
 }
