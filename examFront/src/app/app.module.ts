@@ -54,6 +54,7 @@ import { DashboarddComponent } from './dashboardd/dashboardd.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
+import { DisplayCategoryComponent } from './pages/display-category/display-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +80,8 @@ import { MaterialModule } from './material-module';
     OrdersComponent,
     SangleProductComponent,
     ShoppingCartComponent,
-    DashboarddComponent
+    DashboarddComponent,
+    DisplayCategoryComponent
   
   ],
   imports: [

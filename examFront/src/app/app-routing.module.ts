@@ -18,12 +18,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { CommonModule } from '@angular/common';
 import { DashboarddComponent } from './dashboardd/dashboardd.component';
 import { SangleProductComponent } from './ecommerce/sangle-product/sangle-product.component';
+import { DisplayCategoryComponent } from './pages/display-category/display-category.component';
 
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
   {  path: 'dashboard',
    component: DashboarddComponent,
+},
+{
+  path: 'dsiplay-category/:idCategory',
+  component: DisplayCategoryComponent
 },
 {  path: 'footer',
 component: FooterComponent,

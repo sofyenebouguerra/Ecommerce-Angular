@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Product, ProductOrder, ProductOrders, User} from 'src/app/models/Modal';
 
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { LoginService } from 'src/app/services/login.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
@@ -28,18 +29,23 @@ export class ProductsComponent implements OnInit {
   showMyContainerInfo = false;
   showBtn = -1;
   idCart: number;
+  isLoggedIn=false;
 
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
-    private productService: ProductService, private userService: UserService) {
-      this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
-        this.user = user;
-      });
+    private productService: ProductService, private userService: UserService,public loginn :LoginService) {
+     
   }
 
   ngOnInit() {
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();
+    this.isLoggedIn=this.loginn.isLoggedIn();
+    this.user=this.loginn.getUser();
+    this.loginn.loginStatusSubject.asObservable().subscribe(data=>{
+      this.isLoggedIn=this.loginn.isLoggedIn();
+      this.user=this.loginn.getUser();
+    });
 
   }
 

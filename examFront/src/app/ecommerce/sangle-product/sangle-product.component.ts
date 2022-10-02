@@ -14,6 +14,7 @@ import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersComponent } from '../orders/orders.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-sangle-product',
@@ -38,7 +39,7 @@ export class SangleProductComponent implements OnInit {
   orderFinished = false;
   showBtn = -1;
   submitted = false;
-
+  isLoggedIn=false;
   @ViewChild('shoppingCartC')
   shoppingCartC: ShoppingCartComponent;
 
@@ -57,13 +58,20 @@ export class SangleProductComponent implements OnInit {
   constructor(private productService: ProductService, private tagService: TagService,
     private orderService: OrderService, private route: ActivatedRoute, private userService: UserService,
     private commentService: CommentService, private dialog: MatDialog,
-    private cartService: CartService) {
+    private cartService: CartService,public loginn :LoginService) {
 
   }
 
   ngOnInit() {
     this.loadOrders();
     this.sangleProduct();
+    this.isLoggedIn=this.loginn.isLoggedIn();
+    this.user=this.loginn.getUser();
+    this.loginn.loginStatusSubject.asObservable().subscribe(data=>{
+      this.isLoggedIn=this.loginn.isLoggedIn();
+      this.user=this.loginn.getUser();
+      
+    });
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
     })

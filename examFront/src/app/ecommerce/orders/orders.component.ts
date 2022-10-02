@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { ProductOrders, User } from 'src/app/models/Modal';
+import { LoginService } from 'src/app/services/login.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -30,12 +31,22 @@ export class OrdersComponent implements OnInit {
   hideDiv = true;
   newDate: Date;
   hideItem: boolean;
-
-  constructor(private orderService: OrderService, private userService: UserService, private dialog: MatDialog) {
+  isLoggedIn=false;
+  constructor(private orderService: OrderService, private userService: UserService, private dialog: MatDialog,public loginn :LoginService) {
     this.orders = this.orderService.ProductOrders;
   }
 
   ngOnInit() {
+
+    this.isLoggedIn=this.loginn.isLoggedIn();
+    this.user=this.loginn.getUser();
+    this.loginn.loginStatusSubject.asObservable().subscribe(data=>{
+      this.isLoggedIn=this.loginn.isLoggedIn();
+      this.user=this.loginn.getUser();
+    });
+
+
+    
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
       if (this.nameOnCard != null || this.cardNumber || this.cvv || this.address) {

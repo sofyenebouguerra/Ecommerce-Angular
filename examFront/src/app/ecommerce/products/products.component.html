@@ -24,7 +24,7 @@
             </div>
           </div>
           <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
-          <div class="row" *ngIf="user">
+          <div class="row" *ngIf="isLoggedIn">
             <div class="col-5 padding-0" *ngIf="!isProductSelected(order.product)" style="margin-left: 15px">
               <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
             </div>
@@ -39,7 +39,7 @@
               </button>
             </div>
           </div>
-          <div *ngIf="!user">
+          <div *ngIf="!isLoggedIn">
                 <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
                     (click)="login()">Login</button> </p>
           </div>

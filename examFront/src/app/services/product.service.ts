@@ -51,8 +51,8 @@ export class ProductService {
     return this.http.delete<Product>(`http://localhost:8086/product/deleteProduct/${id}`);
   }
 
-  findProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:8086/product/findProductById/${id}`);
+  findProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8086/product/findProductById/${productId}`);
   }
 
   findAllProducts(): Observable<Product[]> {

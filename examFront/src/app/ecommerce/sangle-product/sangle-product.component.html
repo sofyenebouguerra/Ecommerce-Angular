@@ -22,7 +22,7 @@
               </li>
             </ul>
   
-            <div class="button" *ngIf="user">
+            <div class="button" *ngIf="isLoggedIn">
               <div *ngIf="!isProductSelected(order.product)">
                 <button id="addToCartBtn" class="btn-block" (click)="addToCart(order,  user.id)">Add To Cart
                 </button>
@@ -33,7 +33,7 @@
               </div>
             </div>
   
-            <div *ngIf="!user">
+            <div *ngIf="!isLoggedIn">
               <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
                   (click)="login()">Login</button> </p>
             </div>
@@ -75,7 +75,7 @@
       <p><strong>Comments </strong> </p>
     </div>
   
-    <div class="card col-md-8" *ngIf="user">
+    <div class="card col-md-8" *ngIf="isLoggedIn">
       <div class="card-body">
         <form>
           <div class="mb-3">
@@ -90,7 +90,7 @@
       </div>
     </div>
   
-    <div class="card col-md-8" *ngIf="!user">
+    <div class="card col-md-8" *ngIf="!isLoggedIn">
       <div class="card-body">
         <div class="info-comment">
           <p><strong>Please login to add Comment </strong> <button type="button" class="btn btn-link"

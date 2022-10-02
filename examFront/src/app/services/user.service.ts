@@ -19,24 +19,24 @@ export class UserService {
 
 
   addUserr(user: User): Observable<User> {
-    return this.http.post<User>('http://localhost:8080/api/addUser', user);
+    return this.http.post<User>('http://localhost:8086/user/addUser', user);
   }
 
   findAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8080/api/admin/findAllUsers');
+    return this.http.get<User[]>('http://localhost:8086/user/admin/findAllUsers');
   }
   findUserById(id: any): Observable<User> {
-    return this.http.get<User>(`http://localhost:8080/api/findUserById/${id}`);
+    return this.http.get<User>(`http://localhost:8086/user/findUserById/${id}`);
   }
   editUser(user: User, idUser: number): Observable<User> {
-    return this.http.put<User>(`http://localhost:8080/api/editUser/${idUser}`, user);
+    return this.http.put<User>(`http://localhost:8086/user/editUser/${idUser}`, user);
   }
 
   deleteUser(idUser: number): Observable<User> {
-    return this.http.delete<User>(`http://localhost:8080/api/deleteUser/${idUser}`);
+    return this.http.delete<User>(`http://localhost:8086/user/deleteUser/${idUser}`);
   }
   findByUsername(username: string): Observable<any> {
-    return  this.http.get<any>(`http://localhost:8080/api/findByUsername/${username}`);
+    return  this.http.get<any>(`http://localhost:8086/user/findByUsername/${username}`);
   }
 
   saveUsername(username: string) {
