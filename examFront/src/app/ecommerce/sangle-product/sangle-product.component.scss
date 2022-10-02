@@ -53,12 +53,12 @@ body {
     font-size: 20px;
   }
   &.pricing-featured .pricing-title {
-    background: #ff4136;
+    background: #0074d9;
   }
 }
 
 .pricing-value {
-  width: 180px;
+  width: 220px;
   height: 180px;
   padding-top: 46px;
   border-radius: 50%;
@@ -68,7 +68,7 @@ body {
   margin: 10px auto;
 }
 .pricing-value .smallText {
-  font-size: 14px;
+  font-size: 10px;
 }
 .pricing-value .undertext {
   display: block;
@@ -79,8 +79,8 @@ body {
   border: 2px solid #0074d9;
 }
 .pricing-item.pricing-featured .pricing-value {
-  background: #ff4136;
-  border: 2px solid #ff4136;
+  background: #0074d9;
+  border: 2px solid #3600;
 }
 
 .pricing-item .pricing-features {

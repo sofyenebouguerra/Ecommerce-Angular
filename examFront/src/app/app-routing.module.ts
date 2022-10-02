@@ -1,3 +1,4 @@
+import { FooterComponent } from './components/footer/footer.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
 import { ProductResolveService } from './services/product-resolve.service';
@@ -16,12 +17,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { CommonModule } from '@angular/common';
 import { DashboarddComponent } from './dashboardd/dashboardd.component';
+import { SangleProductComponent } from './ecommerce/sangle-product/sangle-product.component';
 
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
   {  path: 'dashboard',
    component: DashboarddComponent,
+},
+{  path: 'footer',
+component: FooterComponent,
+},
+{
+  path: 'sangle/product/:idProduct',
+  component: SangleProductComponent
+},
+{
+  path: 'puy/product/:name',
+  component: SangleProductComponent
 },
 
  { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},

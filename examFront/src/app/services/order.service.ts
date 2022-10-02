@@ -37,7 +37,7 @@ export class OrderService {
 
   set ProductOrders(value: ProductOrders) {
     this.orders = value;
-   // this.ordersSubject.next();
+   this.ordersSubject.next(0);
   }
 
   get ProductOrders() {
@@ -50,6 +50,6 @@ export class OrderService {
 
   set Total(value: number) {
     this.total = value;
-   // this.totalSubject.next();
+    this.totalSubject.next(0);
   }
 }

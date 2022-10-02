@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductService } from '../services/product.service';
+import { ProduitService } from '../services/produit.service';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -32,12 +33,13 @@ export class EcommerceComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
+  
   }
 
   finishOrder(orderFinished: boolean) {
     this.orderFinished = orderFinished;
   }
-
+  
   reset() {
     this.orderFinished = false;
     this.productsC.reset();

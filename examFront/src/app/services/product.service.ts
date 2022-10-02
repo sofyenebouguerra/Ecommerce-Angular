@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  host: string = 'http://localhost:8086';
-
+ 
+  host: string = 'http://localhost:8086/product';
+  list: Product[];
   constructor(private http:HttpClient) { }
   public addProduct(product:FormData){
     return this.http.post<Product>(`${baseUrl}/product/`,product);
@@ -39,33 +40,33 @@ export class ProductService {
   }
 
   addProductToCategory(product: Product, idCategory: number): Observable<Product> {
-    return this.http.post<Product>(`http://localhost:8086/api/addProductToCategory/${idCategory}`, product);
+    return this.http.post<Product>(`http://localhost:8086/product/addProductToCategory/${idCategory}`, product);
   }
 
   editProduct(product: Product, id: number): Observable<Product> {
-    return this.http.put<Product>(`http://localhost:8080/api/editProduct/${id}`, product);
+    return this.http.put<Product>(`http://localhost:8086/product/editProduct/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(`http://localhost:8080/api/deleteProduct/${id}`);
+    return this.http.delete<Product>(`http://localhost:8086/product/deleteProduct/${id}`);
   }
 
   findProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:8080/api/findProductById/${id}`);
+    return this.http.get<Product>(`http://localhost:8086/product/findProductById/${id}`);
   }
 
   findAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:8080/api/findAllProducts`);
+    return this.http.get<Product[]>(`http://localhost:8086/product/findAllProducts`);
   }
 
   findProductsForCategory(idCategory: number): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:8080/api/findProductsForCategory/${idCategory}`);
+    return this.http.get<Product[]>(`http://localhost:8086/product/findProductsForCategory/${idCategory}`);
   }
   deleteProductFromTag(idProduct: number, idTag: number): Observable<Product> {
-    return this.http.delete<Product>(`http://localhost:8080/api/deleteProductFromTag/${idProduct}/${idTag}`);
+    return this.http.delete<Product>(`http://localhost:8086/product/deleteProductFromTag/${idProduct}/${idTag}`);
   }
   findByName(name: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:8080/api/findByName/${name}`);
+    return this.http.get<Product[]>(`http://localhost:8086/product/findByName/${name}`);
   }
 
 }
