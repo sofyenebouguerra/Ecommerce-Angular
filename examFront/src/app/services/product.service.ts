@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  host: string = 'http://localhost:8081';
+  host: string = 'http://localhost:8086';
 
   constructor(private http:HttpClient) { }
   public addProduct(product:FormData){
@@ -39,7 +39,7 @@ export class ProductService {
   }
 
   addProductToCategory(product: Product, idCategory: number): Observable<Product> {
-    return this.http.post<Product>(`http://localhost:8080/api/addProductToCategory/${idCategory}`, product);
+    return this.http.post<Product>(`http://localhost:8086/api/addProductToCategory/${idCategory}`, product);
   }
 
   editProduct(product: Product, id: number): Observable<Product> {
