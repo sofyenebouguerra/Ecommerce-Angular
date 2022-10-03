@@ -332,15 +332,21 @@
     display: none;
 }
 
-.cart-item ul li a {
-    padding: 0 18px;
+.cart-item ul li button {
+    padding: 0 25px;
     color: #ccc;
 }
-
-.cart-item ul li a:hover {
-    color: #fa0;
+.cart-item ul li button {
+background-color: #111;
+border: #111;
 }
 
+.cart-item ul li button:hover {
+    color: #fa0;
+}
+.cart-item ul li button i {
+    color: #ccc;
+}
 .product-container {
     position: absolute;
     right: -40px;

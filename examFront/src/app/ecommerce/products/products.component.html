@@ -20,7 +20,7 @@
           <div class="modal" [attr.id]="'undoBtn' + i" *ngIf="showBtn === i && showMyContainerInfo" class="editBtn"
             md-raised-button color="primary">
             <div class="modal-content">
-              <span>{{ productDescription }}</span>
+              <span>{{ description }}</span>
             </div>
           </div>
           <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
@@ -108,14 +108,40 @@
                         <div class="cart-line"></div>
                         <div class="cart-item">
                             <ul>
-                                <li><a href=""><i class="fa fa-shopping-basket"></i></a></li>
-                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                <li><a href=""><i class="fa fa-search"></i></a></li>
+                                <li><button title="Information" id="btn" (click)="showUndoBtn(i)" (click)="productInfo(order.product.productId)"  ><i class="fa fa-info-circle fa-1.5x " ></i></button></li>
+                                <li><button  title="View" id="btn" (click)="sngleProduct(order.product.productId)" ><i class="fa fa-eye" aria-hidden="true"></i></button></li>
+                                <li><button  title="Buy Now"><i class="fa fa-shopping-basket fa-1.5x" ></i></button></li>
+                                <div class="modal" [attr.id]="'undoBtn' + i" *ngIf="showBtn === i && showMyContainerInfo" class="editBtn"
+                                 md-raised-button color="primary">
+                                <div class="modal-content" style="color: bisque;">
+                                <span>{{ description }}</span>
+                                </div>
+                                 </div>
                             </ul>
                         </div>
                     </div>
+                    <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
+                    <div class="row" *ngIf="isLoggedIn">
+                      <div class="col-5 padding-0" *ngIf="!isProductSelected(order.product)" style="margin-left: 15px">
+                        <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
+                      </div>
+                      <div class="col-5 padding-0" *ngIf="!isProductSelected(order.product)">
+                        <button class="btn btn-primary" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
+                          Buy Now
+                        </button>
+                      </div>
+                      <div class="col-12" *ngIf="isProductSelected(order.product)">
+                        <button class="btn btn-danger btn-block active" (click)="removeFromCart(order)">
+                          Remove From Cart
+                        </button>
+                      </div>
+                    </div>
+                    <div *ngIf="!isLoggedIn">
+                          <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
+                              (click)="login()">Login</button> </p>
+                    </div>
                     <div class="content">
-                        <a href="javascript:void(0);">Incidid Tongue Bar</a>
+                        <a href="javascript:void(0);">{{ order.product.productName }}</a>
                         <div class="rating">
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
@@ -123,7 +149,7 @@
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <p><span class="money">{{ order.product.productActualPrice }}</span><span class="price-old">{{ order.product.dis }}</span></p>
+                        <p><span class="money">{{ order.product.productActualPrice }}</span><span class="price-old">{{ order.product.productDiscountPrice }}</span></p>
                     </div>
                 </div>
             </div>
