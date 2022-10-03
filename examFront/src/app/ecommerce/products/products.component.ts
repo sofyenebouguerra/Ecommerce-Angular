@@ -49,6 +49,13 @@ export class ProductsComponent implements OnInit {
 
   }
 
+
+  url: string = "../assets/memeT/1n.jpg";
+  
+    imageChange(event: any){
+        this.url = event.target.src;
+    }
+
   addToCart(order: ProductOrder, idUser) {
     this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;

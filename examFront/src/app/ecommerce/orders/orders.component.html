@@ -14,14 +14,14 @@
         </a>
       </div>
     </div>
-    <h2 class="text-center" *ngIf="!paid" role="alert" class="alert alert-primary">ORDER</h2>
+    <h2  class="text-center" *ngIf="!paid" role="alert" class="alert alert-primary">ORDER</h2>
     <ul *ngIf="!paid" id="bill">
       <li *ngFor="let order of orders.productOrders">
         {{ order.product.name }} - ${{ order.product.price }} x {{ order.quantity}} pcs.
       </li>
     </ul>
     <p role="alert" class="alert alert-danger" *ngIf="!paid">Total amount: {{ total }} TND</p>
-    <button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
+    <button class="btn btn-primary btn-block "  (click)="pay()" *ngIf="!paid">Pay</button>
   </div>
 
   <div *ngIf="paid">
@@ -30,7 +30,7 @@
         <li class="header" role="alert" class="alert alert-success" style="margin-bottom: 1px;">
           <strong>Congratulation!</strong> You successfully made the order. <strong>Bill is</strong>
         </li>
-        <li class="grey" style="color: #c0392b">Total amount: {{ total }} TND With delivry</li>
+        <li class="grey" style="color: #fd0a0a">Total amount: {{ total }} TND With delivry</li>
         <li> {{newDate | date: 'yyyy-MM-dd hh:mm' }} </li>
         <li class="grey" style="cursor: pointer; color: #FFF"><a (click)="goToHome()" class="button">Finished</a></li>
       </ul>

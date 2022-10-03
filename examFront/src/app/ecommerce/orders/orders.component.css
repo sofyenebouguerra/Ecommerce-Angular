@@ -69,6 +69,17 @@
     font-size: 18px;
     border-radius: 5px;
   }
+  .order  .button   {
+    background-color: #af4caa;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+
+  }
   
   @media only screen and (max-width: 600px) {
     .columns {

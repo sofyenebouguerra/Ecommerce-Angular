@@ -1,3 +1,4 @@
+import { ProductsComponent } from './ecommerce/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
@@ -25,6 +26,9 @@ const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
   {  path: 'dashboard',
    component: DashboarddComponent,
+},
+{  path: 'affpro',
+component: ProductsComponent,
 },
 {
   path: 'dsiplay-category/:idCategory',

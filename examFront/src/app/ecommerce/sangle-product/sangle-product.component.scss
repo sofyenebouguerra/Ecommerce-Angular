@@ -47,13 +47,13 @@ body {
     color: white;
     display: block;
     position: relative;
-    background: #0074d9;
+    background: #c5e512;
     padding: 7px;
     font-weight: bold;
     font-size: 20px;
   }
   &.pricing-featured .pricing-title {
-    background: #0074d9;
+    background: #f10c0c;
   }
 }
 
@@ -79,7 +79,7 @@ body {
   border: 2px solid #0074d9;
 }
 .pricing-item.pricing-featured .pricing-value {
-  background: #0074d9;
+  background: #f10c0c;
   border: 2px solid #3600;
 }
 
@@ -102,7 +102,7 @@ body {
 }
 
 .button {
-  width: 160px;
+  width: 180px;
   height: 38px;
   font-weight: 300;
   font-size: 16px;
@@ -119,7 +119,7 @@ body {
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
   &:hover {
-    background: #0074d9;
+    background: #c5e512;
     color: #fff;
     border: none;
     -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
@@ -131,9 +131,9 @@ body {
 
 .pricing-item.pricing-featured .button {
   color: #ff4136;
-  border: 2px solid #ff4136;
+  border: 2px solid #e8ff36;
   &:hover {
-    background: #ff4136;
+    background: gold;
     color: #fff;
   }
 }
@@ -142,7 +142,7 @@ body {
   width: 180px;
   height: 32px;
   padding: 0 20px;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 25px;
   text-align: center;
   color: #fff;
@@ -162,7 +162,7 @@ body {
   border: none;
 }
 #addToCartBtn:hover {
-  background: #0074d9;
+  background: gold;
 }
 .jumbotron span {
   margin-left: 5px;
