@@ -1,10 +1,14 @@
 
-<div class="container" [hidden]="orderFinished">
-    <div class="row">
-      <div class="col-lg-4">
-        <h2 class="title-page"><i class="fab fa-dropbox"></i> Products <i class="fab fa-dropbox"></i></h2>
+<div class="container" style="background: aliceblue;" [hidden]="orderFinished">
+    <div class="row" >
+      <div class="col-lg-6">
+      
+          <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
+          </app-shopping-cart>
+   
       </div>
-      <div class="col-lg-8">
+
+      <div class="col-lg-5">
         <div class="input-group mb-3" style="margin-top: 15px;">
           <input type="text" class="form-control" placeholder="Search product" name="name" [(ngModel)]="name">
           <button class="btn btn-danger" type="button" (click)="search()"><i class="fas fa-search"></i></button>
@@ -14,45 +18,86 @@
   </div>
   <hr>
   <div class="row" style="padding-bottom: 40px;" *ngIf="!showSearch">
-    <div class="col-md-9">
+    <div class="col-md-12">
       <app-products #productsC [hidden]="orderFinished"></app-products>
     </div>
-    <div class="col-md-3">
-      <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
-      </app-shopping-cart>
-    </div>
+    
   
     <div class="col-md-6 offset-3">
       <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
     </div>
   </div>
   
-  <div *ngIf="showSearch">
-    <div class="card-deck" style="padding-bottom: 40px;">
-      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products  let i = index;">
-        <div class="card text-center">
-          <div class="card-header" style="background-color: #bdc3c7;">
-            <h4>{{product.productName}} </h4>
-          </div>
-  
-          <div class="card-body">
-            <a (click)="sngleProduct(product.productId)"> <img class="card-img-top img-thumbnail"
-                style="width: 230px; height: 300px; cursor: pointer;"  src= "{{this.productService.host+'/Imgproduct/'+product.productId}}"  alt="image"></a>
-            <h5 class="card-title" id="price">Price = {{product.productActualPrice}} TND<i ></i>
-              <button title="Information" id="btn" (click)=showUndoBtn(i) (click)="productInfo(product.productId)">
-                <i class="fas fa-info-circle"></i></button>
-              <button title="View" id="btn" (click)="sngleProduct(product.productId)"> <i class="fas fa-eye-slash"></i></button>
-            </h5>
-            <div class="modal" [attr.id]="'undoBtn'+i" *ngIf="showBtn===i && showMyContainerInfo" class="editBtn"
-              md-raised-button color="primary">
-              <div class="modal-content">
-                <span>{{product.productDescription}}</span>
+
+
+<div *ngIf="showSearch">
+  <section class="bg-color">
+    <div class="containers">
+      <div class="row">
+        <div class="col-md-3" class="text-center" *ngFor="let product of products; let i = index">
+          <div class="card">
+            <div class="card-main">
+                <div class="discount">-10%</div>
+                  <div class="label label-green">Pre-order</div>
+                     <div class="product-container">
+                       <div class="p"><img src="../assets/memeT/1n.jpg" alt="Product"></div>
+                       <div class="p"><img src="../assets/memeT/3n.jpg" alt="Product"></div>
+                       <div class="p"><img src="../assets/memeT/4n.jpg" alt="Product"></div>
+                </div>
+                <div class="image" >
+                    <img src= "{{this.productService.host+'/Imgproduct/'+product.productId}}" alt="Product">
+                </div>
+                <div class="cart-line"></div>
+                <div class="cart-item">
+                    <ul>
+                        <li><button title="Information" id="btn" (click)="showUndoBtn(i)" (click)="productInfo(product.productId)"  ><i class="fa fa-info-circle fa-1.5x " ></i></button></li>
+                        <li><button  title="View" id="btn" (click)="sngleProduct(product.productId)" ><i class="fa fa-eye" aria-hidden="true"></i></button></li>
+                        <li><button  title="Buy Now"><i class="fa fa-shopping-basket fa-1.5x" ></i></button></li>
+                        <div class="modal" [attr.id]="'undoBtn' + i" *ngIf="showBtn === i && showMyContainerInfo" class="editBtn"
+                         md-raised-button color="primary">
+                        <div class="modal-content" style="color: bisque;">
+                          <span>{{product.productDescription}}</span>
+                        </div>
+                         </div>
+                    </ul>
+                </div>
+            </div>
+            <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
+            <div class="row" *ngIf="isLoggedIn">
+              <div class="shop">
+              <div class="text-center" *ngIf="!isProductSelected(order.product)" style="margin-right: 80px ;margin-left: 40px;">
+                <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
+              </div>
+              <div class="ss">
+              <div *ngIf="!isProductSelected(product)">
+                <button title="Add To Cart" class="fa fa-cart-plus fa-2x " aria-hidden="true" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
+                </button>
+              </div>
               </div>
             </div>
-  
-          </div>
-        </div>
+              <div class="col-12" *ngIf="isProductSelected(product)">
+                <button class="btn btn-danger btn-block active" (click)="removeFromCart(order)" style="margin-right: 30px ;margin-left: 30px;">
+                  Remove From Cart
+                </button>
+              </div>
+            
+            </div>
+           
+            <div class="content">
+                <a href="javascript:void(0);">{{ product.productName }}</a>
+                <div class="rating">
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p><span class="money">{{ product.productActualPrice }}</span><span class="price-old">{{ product.productDiscountPrice }}</span></p>
+            </div>
+         </div>
+       </div>
       </div>
     </div>
-  </div>
+   </section>
+</div>
   

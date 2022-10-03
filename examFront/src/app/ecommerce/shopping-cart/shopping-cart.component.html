@@ -1,9 +1,11 @@
-<div style="background: aliceblue; padding: 10px; border-radius: 5px;">
-    <div class="card text-white bg-primary mb-3" style="background: #0af4c1" style="max-width: 19rem;">
+<div style="background: aliceblue;  padding: 3px; border-radius: 3px;">
+  <div class="row">
+    <div class="col-lg-4">
+    <div class="card text-white bg-primary mb-3" style="background: #0af4c1" style="max-width: 10rem;">
       <div class="card-header text-center">Shopping Cart</div>
       <div class="card-body">
         <h5 class="card-title">Total: {{total}} TND</h5>
-        <h6 class="card-title">Items bought</h6>
+        <h4 class="card-title">Items bought</h4>
   
         <ul>
           <li *ngFor="let order of orders.productOrders">
@@ -16,8 +18,9 @@
         </button>
       </div>
     </div>
-  
-    <div class="card text-white  mb-3" style="max-width: 19rem;" style="background: #0af4c1">
+  </div>
+  <div class="col-lg-4" style="margin-right: 10px;">
+    <div class="card text-white  mb-2"  style="max-width: 7rem;" style="background: #0af4f4 !important; ">
       <div class="card-header text-center">Delivry</div>
       <div class="card-body" style="padding: 0px !important; margin-top: -30px;">
         <div class="text-center mt-5" style="text-align: left !important; padding: 0">
@@ -33,6 +36,8 @@
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
   
   

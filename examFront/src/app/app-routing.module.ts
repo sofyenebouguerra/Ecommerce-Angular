@@ -1,3 +1,4 @@
+import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
@@ -29,6 +30,9 @@ const routes: Routes = [
 },
 {  path: 'affpro',
 component: ProductsComponent,
+},
+{  path: 'shop',
+component: ShoppingCartComponent,
 },
 {
   path: 'dsiplay-category/:idCategory',
