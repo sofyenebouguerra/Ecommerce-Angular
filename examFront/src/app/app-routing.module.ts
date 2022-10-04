@@ -1,3 +1,4 @@
+import { authInterceptorProviders } from './services/auth.interceptor';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -6,8 +7,7 @@ import { AddProduitComponent } from './pages/admin/add-produit/add-produit.compo
 import { ProductResolveService } from './services/product-resolve.service';
 import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
-import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileeComponent } from './pages/profilee/profile.component';
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
@@ -21,6 +21,9 @@ import { CommonModule } from '@angular/common';
 import { DashboarddComponent } from './dashboardd/dashboardd.component';
 import { SangleProductComponent } from './ecommerce/sangle-product/sangle-product.component';
 import { DisplayCategoryComponent } from './pages/display-category/display-category.component';
+import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CategoriesComponent } from './pages/admin/categories/categories.component';
 
 
 const routes: Routes = [
@@ -42,12 +45,21 @@ component: ShoppingCartComponent,
 component: FooterComponent,
 },
 {
+  path: 'display-tag/:idTag',
+  component: DisplayTagComponent
+},
+{
   path: 'sangle/product/:idProduct',
   component: SangleProductComponent
 },
 {
   path: 'puy/product/:name',
   component: SangleProductComponent
+},
+{
+  path: 'profile/:id',
+  component: ProfileComponent,
+ 
 },
 
  { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},
@@ -57,10 +69,10 @@ component: FooterComponent,
   { path:'admin',component:DashboardComponent,children:[
     {
       path:'',component:HomeComponent
-    },
+    }, 
 
     {
-      path:'profile',component:ProfileComponent
+      path:'profilee',component:ProfileeComponent
     },
     {
       path:'add-product',component:AddProduitComponent,resolve:{

@@ -1,3 +1,4 @@
+import { AddTagComponent } from './pages/admin/add-tag/add-tag.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,10 +23,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileeComponent } from './pages/profilee/profile.component';
 import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
-import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DragDirective } from './models/drag.directive';
@@ -56,6 +57,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { DisplayCategoryComponent } from './pages/display-category/display-category.component';
 import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { AddProductComponent } from './pages/admin/add-product/add-product.component';
+import { AddTagToProductComponent } from './pages/admin/add-tag-to-product/add-tag-to-product.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CategoriesComponent } from './pages/admin/categories/categories.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,9 +75,8 @@ import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
     HomeComponent,
     DashboardComponent,
     UserDashboardComponent,
-    ProfileComponent,
+    ProfileeComponent,
     SidebarComponent,
-    WelcomeComponent,
     AddNewProductComponent,
     DragDirective,
     ShowProductDetailComponent,
@@ -83,8 +91,14 @@ import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
     ShoppingCartComponent,
     DashboarddComponent,
     DisplayCategoryComponent,
-    DisplayTagComponent
-  
+    DisplayTagComponent,
+    AddCategoryComponent,
+    AddProductComponent,
+    AddTagComponent,
+    AddTagToProductComponent,
+    ProfileComponent,
+    UpdateProfileComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +128,8 @@ import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
     NgbModule,
     NoopAnimationsModule,
     MaterialModule,
+    MatExpansionModule
+
   ],
   providers: [authInterceptorProviders,{ provide: MAT_DIALOG_DATA, useValue: {} ,},{ provide: APP_BASE_HREF, useValue: '' },
   { provide: MatDialogRef, useValue: {} },DatePipe],

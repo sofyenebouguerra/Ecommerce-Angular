@@ -12,28 +12,28 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   addCartToUser(cart: Cart, idUser: number): Observable<Cart> {
-    return this.http.post<Cart>(`http://localhost:8080/api/addCartToUser/${idUser}`, cart);
+    return this.http.post<Cart>(`http://localhost:8086/api/addCartToUser/${idUser}`, cart);
   }
 
 
   deleteCart(id: number): Observable<Cart> {
-    return this.http.delete<Cart>(`http://localhost:8080/api/deleteCart/${id}`);
+    return this.http.delete<Cart>(`http://localhost:8086/api/deleteCart/${id}`);
   }
 
   findCartsForUser(idUser: number): Observable<Cart[]> {
-    return this.http.get<Cart[]>(`http://localhost:8080/api/findCartsForUser/${idUser}`);
+    return this.http.get<Cart[]>(`http://localhost:8086/api/findCartsForUser/${idUser}`);
   }
 
   findCartById(id: number): Observable<Cart> {
-    return this.http.get<Cart>(`http://localhost:8080/api/findCartById/${id}`);
+    return this.http.get<Cart>(`http://localhost:8086/api/findCartById/${id}`);
   }
 
   removeFromCart(idCart: number, idUser: number): Observable<Cart> {
-    return this.http.delete<Cart>(`http://localhost:8080/api/removeFromCart/${idCart}/${idUser}`);
+    return this.http.delete<Cart>(`http://localhost:8086/api/removeFromCart/${idCart}/${idUser}`);
   }
 
   findByCartName(name: string): Observable<Cart> {
-    return this.http.get<Cart>(`http://localhost:8080/api/findByCartName/${name}`);
+    return this.http.get<Cart>(`http://localhost:8086/api/findByCartName/${name}`);
   }
 
   saveCartName(name: string) {

@@ -1,4 +1,4 @@
-import { LoginService } from './../../services/login.service';
+import { LoginService } from '../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileeComponent implements OnInit {
   user:any=null;
 
   constructor(private login:LoginService) { }
 
   ngOnInit(): void {
     this.user=this.login.getUser();
+    console.log(this.user);
   }
  
 }

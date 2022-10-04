@@ -1,7 +1,9 @@
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { User } from 'src/app/models/Modal';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,24 +15,27 @@ export class LoginComponent implements OnInit {
     password:'',
   };
 
-  constructor(private login:LoginService,  private snack:MatSnackBar,private router:Router) { }
+  progressBar = false;
+  userr: User = {} as User;
+  username: string;
+  password: string;
+
+  constructor(private login:LoginService,  private snack:MatSnackBar,private router:Router,private userService:UserService) { }
 
 
   ngOnInit(): void {
+  
+  }
+
+
+  addUser() {
+
   }
 
   formSubmit(){
     console.log("login btn clicked");
 
-    if(
-      this.loginData.username.trim() =='' ||
-      this.loginData.username==null
-    ){
-      this.snack.open("Username is required !! ",'',{
-        duration:3000,
-      });
-      return;
-    }
+
     if(
       this.loginData.password.trim() =='' ||
       this.loginData.password==null
@@ -40,6 +45,7 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
+ 
 
     //request to server to generate token
     this.login.generateToken(this.loginData).subscribe(
@@ -53,6 +59,13 @@ export class LoginComponent implements OnInit {
           (user:any)=>{
             this.login.setUser(user);
             console.log(user);
+
+            this.progressBar = true;
+            console.log(this.username)
+              this.userService.saveUsername(user.username);
+            
+            
+
         //redirect .... ADMIN:admin-dashboard
           //redirect .... Normal:normal-dashboard
             if(this.login.getUserRole()=='ADMIN'){

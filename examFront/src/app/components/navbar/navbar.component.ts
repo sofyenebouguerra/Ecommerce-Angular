@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,9 @@ export class NavbarComponent implements OnInit {
   categories: Category[];
   user:any=null;
 
-  constructor(public login :LoginService,public dialog: MatDialog, private categoryService: CategoryService) { }
+  constructor(public login :LoginService,public dialog: MatDialog, private categoryService: CategoryService,private userService:UserService) {
+
+   }
 
 
   
@@ -24,7 +27,9 @@ export class NavbarComponent implements OnInit {
     this.login.loginStatusSubject.asObservable().subscribe(data=>{
       this.isLoggedIn=this.login.isLoggedIn();
       this.user=this.login.getUser();
+    
     });
+    
     this.categoryService.findAllCategories().subscribe(categories => {
       this.categories = categories;
     });

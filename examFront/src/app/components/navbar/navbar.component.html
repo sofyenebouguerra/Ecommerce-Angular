@@ -9,6 +9,9 @@
       <button mat-menu-item *ngFor="let cat of categories"
         [routerLink]="['/dsiplay-category/', cat.id]">{{cat.name}}</button>
     </mat-menu>
+    <a type="button"  *ngIf="user" [routerLink]="['/profile/', user.id]">
+      Profile {{user.username}} {{user.id}} <i class="fas fa-user"></i>
+    </a>
     <span class="example-spacer"></span>
     <a *ngIf="!isLoggedIn"
     [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">Login
@@ -16,7 +19,7 @@
     <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with share icon">Register
     </a>
     <a *ngIf="isLoggedIn" (click)="logout()" mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with share icon">Logout </a>
-   <button routerLink="/admin/profile"  *ngIf="isLoggedIn && user "  class="example-icon favorite-icon  ml20" mat-button aria-label="Example icon-button with share icon">{{user.username}}
+   <button routerLink="/admin/profilee"  *ngIf="isLoggedIn && user "  class="example-icon favorite-icon  ml20" mat-button aria-label="Example icon-button with share icon">{{user.username}} {{user.id}}
   </button>
   </mat-toolbar>
 
