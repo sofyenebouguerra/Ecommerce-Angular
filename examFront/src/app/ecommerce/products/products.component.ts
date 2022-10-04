@@ -33,7 +33,9 @@ export class ProductsComponent implements OnInit {
 
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
     private productService: ProductService, private userService: UserService,public loginn :LoginService) {
-     
+      this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
+        this.user = user;
+      });
   }
 
   ngOnInit() {
@@ -60,6 +62,7 @@ export class ProductsComponent implements OnInit {
     this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;
     this.productSelected = true;
+    
   }
 
   removeFromCart(productOrder: ProductOrder, idUser) {

@@ -6,5 +6,6 @@ export interface Product{
     productDescription:string,
     productDiscountPrice:number,
     productActualPrice:number,
+    fileName:string,
     productImages:FileHandle[]
 }

@@ -57,6 +57,8 @@ export interface Product {
   productDescription:string,
   productDiscountPrice:number,
   productActualPrice:number,
+  fileName:string
+  
 }
 export interface Tag {
   id: number,

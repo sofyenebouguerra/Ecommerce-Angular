@@ -58,8 +58,13 @@ component: FooterComponent,
 },
 {
   path: 'profile/:id',
-  component: ProfileComponent,
- 
+  component: ProfileComponent, children: [
+    {
+      path: 'categories/:idCategory',
+      component: CategoriesComponent
+    }
+  ]
+
 },
 
  { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},

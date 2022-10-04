@@ -11,9 +11,9 @@ export class OrderService {
   private productOrder: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
 
-  private productOrderSubject = new Subject();
-  private ordersSubject = new Subject();
-  private totalSubject = new Subject();
+  private productOrderSubject = new Subject<void>();
+  private ordersSubject = new Subject<void>();
+  private totalSubject = new Subject<void>();
 
   private total: number;
 
@@ -28,7 +28,7 @@ export class OrderService {
   }
   set SelectedProductOrder(value: ProductOrder) {
     this.productOrder = value;
-    this.productOrderSubject.next('true');
+    this.productOrderSubject.next();
   }
 
   get SelectedProductOrder() {
@@ -37,7 +37,7 @@ export class OrderService {
 
   set ProductOrders(value: ProductOrders) {
     this.orders = value;
-   this.ordersSubject.next(0);
+    this.ordersSubject.next();
   }
 
   get ProductOrders() {
@@ -50,6 +50,6 @@ export class OrderService {
 
   set Total(value: number) {
     this.total = value;
-    this.totalSubject.next('true');
+    this.totalSubject.next();
   }
 }

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginComponent } from 'src/app/pages/login/login.component';
-import { ProductOrder, Product, ProductOrders, UpdateProduct, Tag, User, Comment, Cart } from 'src/app/models/Modal';
+import { ProductOrder,  ProductOrders, UpdateProduct, Tag, User, Comment, Cart, Product } from 'src/app/models/Modal';
 
 
 import { CartService } from 'src/app/services/cart.service';
@@ -15,6 +15,7 @@ import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersComponent } from '../orders/orders.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+
 
 
 @Component({
@@ -83,7 +84,7 @@ export class SangleProductComponent implements OnInit {
     this.cart.name = order.product.productName;
     this.cart.price = order.product.productActualPrice;
     this.cart.quantity = order.quantity;
-    //this.cart.pictureUrl = order.product.pictureUrl;
+    this.cart.pictureUrl = order.product.fileName;
     this.cartService.addCartToUser(this.cart, idUser).subscribe(cart => {
       this.cart = cart;
       this.cartService.saveCartName(this.cart.name);

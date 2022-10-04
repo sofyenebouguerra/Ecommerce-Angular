@@ -28,6 +28,7 @@ public imagePath;
     productDescription: '',
     productDiscountPrice: 0,
     productActualPrice: 0,
+    fileName:"",
     productImages: []
   }
   constructor(private productService:ProductService,private sanitizer:DomSanitizer,private activatedRoute:ActivatedRoute,private toastr:ToastrService) { }

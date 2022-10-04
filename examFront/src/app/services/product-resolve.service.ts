@@ -35,6 +35,7 @@ getProductDetails(){
     productDescription: "",
     productDiscountPrice: 0,
     productActualPrice: 0,
+    fileName:"",
     productImages:[]
 
   };

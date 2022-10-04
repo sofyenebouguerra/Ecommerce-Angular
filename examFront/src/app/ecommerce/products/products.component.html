@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
-                    <div class="row" *ngIf="isLoggedIn">
+                    <div class="row" *ngIf="isLoggedIn && user">
                       <div class="shop">
                       <div class="text-center" *ngIf="!isProductSelected(order.product)" style="margin-right: 80px ;margin-left: 40px;">
                         <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
