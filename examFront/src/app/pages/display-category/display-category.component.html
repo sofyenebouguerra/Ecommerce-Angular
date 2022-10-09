@@ -1,35 +1,66 @@
-<div class="container" [hidden]="orderFinished">
-    <div class="row">
-      <div class="col-lg-4">
-        <h2 class="title-page"><i class="fab fa-dropbox"></i> Products <i class="fab fa-dropbox"></i></h2>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="card-deck" style="padding-bottom: 40px;">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products let i = index;">
-      <div class="card text-center">
-        <div class="card-header" style="background-color: #bdc3c7;">
-          <h4>{{product.productName}}</h4>
-        </div>
+
   
-        <div class="card-body">
-          <a (click)="sngleProduct(product.productId)"><img class="card-img-top img-thumbnail"
-              style="width: 230px; height: 300px; cursor: pointer;" src="{{this.productService.host+'/Imgproduct/'+product.productId}}" alt="image"></a>
-          <h5 class="card-title" id="price">Price = {{product.productActualPrice}} TND<i ></i>
-            <button title="Information" id="btn" (click)=showUndoBtn(i) (click)="productInfo(product.productId)">
-              <i class="fas fa-info-circle"></i></button>
-            <button title="View" id="btn" (click)="sngleProduct(product.productId)"> <i class="fas fa-eye-slash"></i></button>
-          </h5>
-          <div class="modal" [attr.id]="'undoBtn'+i" *ngIf="showBtn===i && showMyContainerInfo" class="editBtn"
-            md-raised-button color="primary">
-            <div class="modal-content">
-              <span>{{product.description}}</span>
+
+  
+  <section class="bg-color">
+    <div class="containers">
+        <div class="title">
+            <p>The Best Seller Of MSI</p>
+            <h2><span>Best</span> Seller</h2>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-3" *ngFor="let product of products let i = index;">
+                <div class="card">
+                    <div class="card-main">
+                        <div class="discount">-10%</div>
+                        <div class="label label-green">Pre-order</div>
+                        <div class="product-container">
+                            <div class="p"><img src="../assets/memeT/1n.jpg" alt="Product"></div>
+                            <div class="p"><img src="../assets/memeT/3n.jpg" alt="Product"></div>
+                            <div class="p"><img src="../assets/memeT/4n.jpg" alt="Product"></div>
+                        </div>
+                        <div class="image" >
+                            <img src= "{{this.productService.host+'/Imgproduct/'+product.productId}}" alt="Product">
+                        </div>
+                        <div class="cart-line"></div>
+                        <div class="cart-item">
+                            <ul>
+                                <li><button title="Information" id="btn" (click)="showUndoBtn(i)" (click)="productInfo(product.productId)"  ><i class="fa fa-info-circle fa-1.5x " ></i></button></li>
+                                <li><button  title="View" id="btn" (click)="sngleProduct(product.productId)" ><i class="fa fa-eye" aria-hidden="true"></i></button></li>
+                                <li><button  title="Buy Now"><i class="fa fa-shopping-basket fa-1.5x" ></i></button></li>
+                                <div class="modal" [attr.id]="'undoBtn' + i" *ngIf="showBtn === i && showMyContainerInfo" class="editBtn"
+                                 md-raised-button color="primary">
+                                <div class="modal-content" style="color: bisque;">
+                                <span>{{ description }}</span>
+                                </div>
+                                 </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
+               
+                   
+                    
+                    
+                    <div class="login" *ngIf="!isLoggedIn">
+                         <button type="button" class="cart-btnL"
+                            (click)="login()"><i class="fa fa-sign-in" aria-hidden="true"></i>Please login to buy product</button> 
+                      </div>
+                    <div class="content">
+                        <a href="javascript:void(0);">{{ product.productName }}</a>
+                        <div class="rating">
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <p><span class="money">{{ product.productActualPrice }}</span><span class="price-old">{{ product.productDiscountPrice }}</span></p>
+                    </div>
+                </div>
             </div>
-          </div>
-  
+      
         </div>
-      </div>
     </div>
-  </div>
-  
+</section>

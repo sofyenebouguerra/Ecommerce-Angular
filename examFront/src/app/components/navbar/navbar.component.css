@@ -2,3 +2,148 @@
     flex: 1 1 auto;
   }
   
+  header{
+    background: #111;
+    color: #777;
+    padding: 5px 0;
+}
+
+.language ul{
+    padding:15px;
+    margin:0;
+  
+}
+.language > ul > li{
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px solid rgb(226, 226, 226);
+}
+
+.language ul li i{
+    margin-left: 4px;
+    font-size: 14px;
+}
+.dropdown{
+    background: #fff;
+    border:1px solid rgb(226, 226, 226);
+    border-radius: 4px;
+    position: absolute;
+    z-index: 4;
+    padding: 10px;
+     width: 116px;
+     top: 36px;
+}
+
+.dropdown ul li{
+    list-style-type: none;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    padding: 4px 0;
+    transition: .3s all ease;
+}
+.dropdown ul li:last-child{
+    border-bottom: none;
+}
+
+.dropdown ul li:hover{
+    color: #ff4000;
+}
+.social-menu ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 400px;
+
+}
+
+.social-menu ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-top: 22px;
+
+}
+.social-menu ul li a{
+    color:#777;
+    text-decoration: none;
+    transition: .3s all ease;
+    margin-left: 16px;
+   
+}
+.social-menu ul li a i{
+  color:rgb(2, 182, 41);
+  text-decoration: none;
+  transition: .3s all ease;
+  margin-left: 16px;
+ 
+}
+.social-menu ul li a:hover{
+    color:#ff4000;
+}
+.login{
+    background: #777;
+    padding: 5px 28px;
+    margin-left: 12px;
+    border-radius: 4px;
+    color: #fff!important;
+    transition: .3s all ease;
+}
+.login:hover{
+    background: #125;
+}
+.register{
+  background: #777;
+  padding: 5px 28px;
+  margin-left: 12px;
+  border-radius: 4px;
+  color: #fff!important;
+  transition: .3s all ease;
+}
+.register:hover{
+  background: #125;
+}
+
+
+.logout{
+  background: #777;
+  padding: 5px 18px;
+  margin-left: 12px;
+  margin-right: 10px;
+  border-radius: 4px;
+  color: #fff!important;
+  transition: .3s all ease;
+}
+.logout:hover{
+  background: #125;
+}
+
+.user{
+  background: #777;
+  padding: 5px 28px;
+  margin-left: 12px;
+  border-radius: 4px;
+  color: #fff!important;
+  transition: .3s all ease;
+}
+.user:hover{
+  background: #125;
+}
+
+
+
+.nav-profile-img img{
+  border-radius: 50%;
+  width: 60px;
+  margin-right: 12px;
+  top: 6px;
+}
+
+
+
+
+
+

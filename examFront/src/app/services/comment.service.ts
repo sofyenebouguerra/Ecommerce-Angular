@@ -10,7 +10,7 @@ export class CommentService {
   constructor(private http: HttpClient) { }
 
   addCommentToProduct(comment: Comment, idProduct: number): Observable<Comment> {
-    return this.http.post<Comment>(`http://localhost:8086</api/addCommentToProduct/${idProduct}`, comment);
+    return this.http.post<Comment>(`http://localhost:8086/api/addCommentToProduct/${idProduct}`, comment);
   }
   editComment(comment: Comment, id: number): Observable<Comment> {
     return this.http.put<Comment>(`http://localhost:8086/api/editComment/${id}`, comment);

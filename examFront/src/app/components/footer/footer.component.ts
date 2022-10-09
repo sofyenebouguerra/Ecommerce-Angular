@@ -1,5 +1,4 @@
-import { Product } from './../../models/product.model';
-import { ProduitService } from './../../services/produit.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,23 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public crudApi: ProduitService) { }
-  products:Product[];
+  constructor() { }
   ngOnInit(): void {
-   this.getData();
-  }
-
-
-  getData() {
-    
-    this.crudApi.getAll().subscribe(
-      response => {
-        
-        this.crudApi.list = response;
-        console.log(response);
-      }
-    );
 
   }
+
+
 
 }

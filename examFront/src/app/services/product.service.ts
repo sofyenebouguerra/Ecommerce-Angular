@@ -47,8 +47,8 @@ export class ProductService {
     return this.http.put<Product>(`http://localhost:8086/product/editProduct/${id}`, product);
   }
 
-  deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(`http://localhost:8086/product/deleteProduct/${id}`);
+  deleteProduct(productId: number): Observable<Product> {
+    return this.http.delete<Product>(`http://localhost:8086/product/deleteProduct/${productId}`);
   }
 
   findProductById(productId: number): Observable<Product> {

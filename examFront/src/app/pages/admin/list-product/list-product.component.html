@@ -7,7 +7,7 @@
     </div>
 
     </mat-toolbar>
- <div class="pricing-header mx-auto">
+<div class="pricing-header mx-auto">
   
 
    <div class="table-responsive">
@@ -52,12 +52,12 @@
    
     <td><button class=" btn-warning btn btn-outline-dark ml-1"  (click) = "selectData(item)">
       <i class="fa fa-pencil-square-o" ></i></button></td>
-   <td><button class="btn btn-danger btn btn-outline-dark ml-1"   >
+   <td><button class="btn btn-danger btn btn-outline-dark ml-1"  (click) = "removeData(item.id)" >
       <i class="fa fa-trash-o"></i></button></td>
        </tr>
          </tbody>
          </table>
-         </div>
+      </div>
          <pagination-controls (pageChange)="p = $event"></pagination-controls>
   
        </div>

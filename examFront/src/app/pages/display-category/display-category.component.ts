@@ -33,6 +33,12 @@ export class DisplayCategoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  url: string = "../assets/memeT/1n.jpg";
+  
+  imageChange(event: any){
+      this.url = event.target.src;
+  }
+
   showUndoBtn(index) {
     this.showBtn = index;
   }

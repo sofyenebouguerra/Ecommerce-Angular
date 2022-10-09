@@ -1,7 +1,7 @@
 <br>
 <mat-card>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <mat-card-header>
         <div mat-card-avatar></div>
         <mat-card-title>{{category.name}}</mat-card-title>
@@ -12,17 +12,17 @@
         <div class="card mb-3" *ngFor="let pro of products">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="{{pro.pictureUrl}}" alt="{{pro.name}}" style="width: 150px;">
+              <img  src= "{{this.productService.host+'/Imgproduct/'+pro.productId}}" alt="{{pro.productName}}" style="width: 150px;">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{pro.name}}</h5>
-                <p class="card-text" style="color: firebrick; font-weight: bold;">Price: {{pro.price}}
+                <h5 class="card-title">{{pro.productName}}</h5>
+                <p class="card-text" style="color: firebrick; font-weight: bold;">Price: {{pro.productActualPrice}}
                 </p>
-                <p class="card-text"><small class="text-muted">{{pro.description}}</small></p>
+                <p class="card-text"><small class="text-muted">{{pro.productDescription}}</small></p>
                 <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item" style="cursor: pointer;" (click)="editProduct(pro.id)">Update</li>
-                  <li class="list-group-item" style="cursor: pointer;" (click)="deleteProduct(pro.id, user.id)">Delete
+                  <li class="list-group-item" class=" btn-warning btn btn-outline-dark ml-1" (click) = "selectData(pro)"><i class="fa fa-pencil-square-o" ></i>Update</li>
+                  <li class="list-group-item" class="btn btn-danger btn btn-outline-dark ml-1"  (click)="deleteProduct(pro.productId, user.id)"><i class="fa fa-trash-o" ></i>Delete
                   </li>
                 </ul>
               </div>
@@ -31,13 +31,13 @@
           <div class="row">
             <div class="col-md-4">
               <span class="badge rounded-pill bg-dark"
-                style="cursor: pointer; margin: 10px; color: aliceblue; padding: 5px 10px;" (click)="addTag(pro.id)">
+                style="cursor: pointer; margin: 10px; color: aliceblue; padding: 5px 10px;" class="btn btn-success btn btn-outline-dark ml-1" (click)="addTag(pro.productId)"><i class="fa fa-tags" aria-hidden="true"></i>
                 Add Tag</span>
             </div>
             <div class="col-md-8">
               <mat-accordion>
                 <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header (click)="showTags(pro.id)">
+                  <mat-expansion-panel-header style="background-color: rgb(199, 230, 199);"   (click)="showTags(pro.productId)">
                     <mat-panel-title>
                       Tags
                     </mat-panel-title>
@@ -45,8 +45,8 @@
                       for this product
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                  <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
-                    <mat-chip class="example-box" cdkDrag *ngFor="let tag of tags">
+                  <mat-chip-list class="example-chip"  cdkDropList cdkDropListOrientation="horizontal">
+                    <mat-chip style="background-color: rgb(11, 231, 11);"  class="example-box" cdkDrag *ngFor="let tag of tags">
                       {{tag.name}}
                     </mat-chip>
                   </mat-chip-list>
@@ -58,8 +58,8 @@
 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="primary" (click)="editCategory(category.id)">Update category</button>
-        <button mat-button color="accent" (click)="deleteCategory(category.id, user.id)">Delete
+        <button class=" btn-warning btn btn-outline-dark ml-1"  (click)="editCategory(category.id)"><i class="fa fa-pencil-square-o" ></i>Update category</button>
+        <button  class=" btn-danger btn btn-outline-dark ml-1" (click)="deleteCategory(category.id, user.id)"><i class="fa fa-trash-o" ></i>Delete
           category</button>
       </mat-card-actions>
     </div>
@@ -80,14 +80,14 @@
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
               <mat-card-title>Added By {{comment.addedBy}}</mat-card-title>
-              <mat-card-subtitle>Added At {{comment.addedBy}}</mat-card-subtitle>
+              <mat-card-subtitle>Added At {{comment.addedAt}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
               <strong>{{comment.title}}</strong>
               <p style="width: 350px;">{{comment.message}}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button color="accent" (click)="deleteComment(comment.id)">Delete</button>
+              <button class=" btn-danger btn btn-outline-dark ml-1" (click)="deleteComment(comment.id)"><i class="fa fa-trash-o" ></i>Delete</button>
             </mat-card-actions>
             <hr>
           </mat-card>

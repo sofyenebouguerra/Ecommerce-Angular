@@ -1,63 +1,93 @@
-<div class="container" *ngFor="let order of productOrders let i = index;">
+
     <div class="row">
-      <div class="col" [hidden]="orderFinished">
-  
-        <div class="pricing-table">
-  
-          <div class="pricing-item pricing-featured">
-            <div class='selected'>Recomend</div>
-            <div class="pricing-title">
-              Product
-            </div>
-            <div class="pricing-value">{{order.product.productActualPrice}}
-                TND <span class="smallText">90</span>
-            </div>
-            <ul class="pricing-features">
-              <li><span class="keywords">Name</span> {{order.product.productName}}</li>
-              <li>Description <br>
-                <span>
+      <div class="col-lg-8" style="margin-top: 50px;margin-left: 80px;padding-right: 38px;" [hidden]="orderFinished">
+        <section class="best-selling" *ngFor="let order of productOrders let i = index;" >
+          <div class="containers">
+            <div class="best-selling-container " [hidden]="orderFinished" >
+              <div class="sale-price">
+                Sale <strong>40%</strong>
+              </div>
+              <div class="selling-col-1">
+                <div class="selling-left">
+                  <ul>
+                    <li>
+                      <span class="count-date">{{days}}</span>
+                      <span class="count-day">Days</span>
+                    </li>
+                    <li>
+                      <span class="count-date">{{hours}}</span>
+                      <span class="count-day">Hours</span>
+                    </li>
+                    <li>
+                      <span class="count-date">{{mins}}</span>
+                      <span class="count-day">Mins</span>
+                    </li>
+                    <li>
+                      <span class="count-date">{{secs}}</span>
+                      <span class="count-day">Secs</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="selling-col-2">
+                <div class="selling-img">
+                  <img src= "{{this.productService.host+'/Imgproduct/'+order.product.productId}}" alt="Best">
+                  <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item" *ngFor="let tag of tags"
+                      style="margin-left: 5px;  margin-top: 10px; padding: 5px 10px;">
+                      
+                      <a [routerLink]="['/display-tag/', tag.id]" href="javascript:void(0);" class="cart-btnT"><i class="fa fa-tags" aria-hidden="true" ></i> {{tag.name}}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div *ngIf="!isProductSelected(order.product)">
+                  <input type="hidden" tabindex="0" min="1" max="1" class="form-control" [(ngModel)]="order.quantity" />
+                </div>
+          
+              </div>
+              <div class="selling-col-3">
+                <div class="selling-heading">
+                  <a href="javascript:void(0);">{{order.product.productName}}</a>
+                  <div class="selling-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>
                   {{order.product.productDescription}}
-                 
-                </span>
-              </li>
-            </ul>
-  
-            <div class="button" *ngIf="isLoggedIn">
-              <div *ngIf="!isProductSelected(order.product)">
-                <button id="addToCartBtn" class="btn-block" (click)="addToCart(order,  user.id)">Add To Cart
-                </button>
+                </p>
+                <h3>
+                  <span class="selling-amount">{{order.product.productActualPrice}}</span>
+                  <span class="selling-discount">{{order.product.productDiscountPrice}}</span>
+                </h3>
+                <div class="selling-button">
+                  <a *ngIf="isLoggedIn && !isProductSelected(order.product)" (click)="addToCart(order,  user.id)" href="javascript:void(0);" class="cart-btn"><i class="fa fa-shopping-cart" ></i>Add To Cart</a>
+                  <a *ngIf="isProductSelected(order.product)" (click)="removeFromCart(order,  user.id)" href="javascript:void(0);" class="cart-btnn"><i class="fa fa-shopping-cart" ></i>Remove From Cart</a>
+                  <button type="button" class="main-button">
+                  <a href="javascript:void(0);"><i class="fa fa-heart"></i></a>
+                  <a href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                    </button>
+                </div>
+                <div class="login" *ngIf="!isLoggedIn">
+                  <p> <button type="button" class="cart-btnL"
+                      (click)="login()"><i class="fa fa-sign-in" aria-hidden="true"></i>Please login to buy product</button> </p>
+                </div>
+                </div>
+      
               </div>
-              <div *ngIf="isProductSelected(order.product)">
-                <button class="btn btn-danger btn-block active" (click)="removeFromCart(order,  user.id)">Remove From Cart
-                </button>
-              </div>
-            </div>
-  
-            <div *ngIf="!isLoggedIn">
-              <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
-                  (click)="login()">Login</button> </p>
-            </div>
+       
           </div>
-        </div>
-  
-  
+        </section>
       </div>
-      <div class="col" [hidden]="orderFinished">
-        <img class="card-img-top img-thumbnail" style="width: 100%; height: 570px"  src= "{{this.productService.host+'/Imgproduct/'+order.product.productId}}"
-          alt="image">
-        <div *ngIf="!isProductSelected(order.product)">
-          <input type="hidden" tabindex="0" min="1" max="1" class="form-control" [(ngModel)]="order.quantity" />
-        </div>
-  
-        <ul class="list-group list-group-horizontal-sm">
-          <li class="list-group-item" *ngFor="let tag of tags"
-            style="margin-left: 5px; margin-left: 5px; margin-top: 10px; padding: 5px 10px;">
-            <a [routerLink]="['/display-tag/', tag.id]" style="cursor: pointer; color: blue;">{{tag.name}}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-5 md-8" style="padding-right: 34px; margin-left: 28px;">
-        <div style="margin-top: 5px;">
+      
+
+
+
+      <div class="col" style="padding-right: 3px;  margin-right: 10px;">
+        <div style="margin-top: 40px; width: 400px;">
           <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
           </app-shopping-cart>
         </div>
@@ -68,7 +98,7 @@
       </div>
       <hr style="border: 1px solid #ddd;">
     </div>
-  </div>
+ 
   
   <div class="container" style="margin-bottom: 50px;" [hidden]="orderFinished">
     <div class="info-comment">
@@ -100,11 +130,14 @@
     </div>
   
     <div class="container-comment" *ngFor="let item of comments">
-      <img src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg"
-        alt="Avatar" style="width:90px">
+     
+        <img src= "{{this.userService.host+'/Imgusers/'+user.id}}" alt="User" style="width:90px">
+      
+        
       <p><span>{{item.addedBy}}</span> {{item.addedAt | date}}</p>
       <p><strong>{{item.title}}: </strong> {{item.message}}</p>
     </div>
   
   </div>
+  
   

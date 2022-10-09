@@ -1,7 +1,7 @@
 
 <div class="container" style="background: aliceblue;" [hidden]="orderFinished">
     <div class="row" >
-      <div class="col-lg-6">
+      <div hidden="true" class="col-lg-6">
       
           <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
           </app-shopping-cart>
@@ -70,8 +70,7 @@
               </div>
               <div class="ss">
               <div *ngIf="!isProductSelected(product)">
-                <button title="Add To Cart" class="fa fa-cart-plus fa-2x " aria-hidden="true" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
-                </button>
+                 <a *ngIf="isLoggedIn && !isProductSelected(order.product)" (click)="addToCart(order,  user.id)" href="javascript:void(0);" class="cart-btn"><i class="fa fa-shopping-cart" ></i>Add To Cart</a>
               </div>
               </div>
             </div>
@@ -101,3 +100,5 @@
    </section>
 </div>
   
+
+

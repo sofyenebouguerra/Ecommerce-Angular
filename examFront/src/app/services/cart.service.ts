@@ -10,7 +10,7 @@ const NAME_KEY = 'NAME';
 })
 export class CartService {
   constructor(private http: HttpClient) { }
-
+  host: string = 'http://localhost:8086/api';
   addCartToUser(cart: Cart, idUser: number): Observable<Cart> {
     return this.http.post<Cart>(`http://localhost:8086/api/addCartToUser/${idUser}`, cart);
   }

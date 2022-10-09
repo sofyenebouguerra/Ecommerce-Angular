@@ -1,7 +1,7 @@
 <div class="row" style="margin-top: 40px;">
     <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body" style="background-color: #e15f41; padding: 0px; padding-left: 10px; color: wheat;">
+      <div class="card"  >
+        <div class="card-body" style="background-color: #13adcc; padding: 0px; padding-left: 10px; color: wheat;">
           <h2 class="card-title">Your Profile {{user.username}}</h2>
         </div>
         <ul class="list-group list-group-flush" *ngIf="user.email || user.nameOnCard || user.cardNumber">
@@ -14,67 +14,84 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span style="cursor: pointer;" [routerLink]="['/profile/' + user.id + '/categories/', cat.id]"
                 routerLinkActive="router-link-active"> {{cat.name}} </span>
-              <button type="button" class="btn btn-outline-primary btn-sm" (click)="addProduct(cat.id)">Add
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="addProduct(cat.id)"><i class="fa fa-plus-square"></i>Add
                 product</button>
             </li>
           </ul>
         </div>
-  
+
+       
+      
+      
         <div class="card-body">
-          <button type="button" class="btn btn-danger" (click)="logout(user.id)">Logout</button>
+          <button type="button" class="btn btn-danger" (click)="logout(user.id)"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
           <button type="button" class="btn btn-warning" style="margin: 0 10px;"
-            (click)="updateProfile(user.id)">Update</button>
-          <button type="button" class="btn btn-info" (click)="addCategory(user.id)" *ngIf="user.admin">Add
+            (click)="updateProfile(user.id)"><i class="fa fa-pencil-square"></i>Update</button>
+          <button type="button" class="btn btn-info" (click)="addCategory(user.id)" *ngIf="user.admin"><i class="fa fa-plus-square"></i>Add
             category</button>
           <button type="button" class="btn btn-success" (click)="addTag()" style="margin-left: 10px;"
-            *ngIf="user.admin">Add tag</button>
+            *ngIf="user.admin"><i class="fa fa-tags" aria-hidden="true"></i>Add tag</button>
         </div>
       </div>
   
     </div>
-    <div class="col-lg-8">
-      <div class="card" *ngIf="cartLength>=1" style="margin-top: 30px;">
-        <div class="card-body">
-          <mat-accordion>
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Your product
-                </mat-panel-title>
-                <mat-panel-description>
-                  This is a product saved
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let cart of carts">
-                    <th scope="row"><img src="{{cart.pictureUrl}}" class="img-thumbnail" style="width: 100px;"></th>
-                    <td>{{cart.name}}</td>
-                    <td>{{cart.price}}</td>
-                    <td>{{cart.quantity}}</td>
-                    <td><span class="material-icons" (click)="deleteCart(cart.id, user.id)"
-                        style="cursor: pointer; color: #e15f41;">delete_forever</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-      </div>
+    <div class="col-lg-8" >
       <router-outlet></router-outlet>
+      <mat-toolbar *ngIf="user.admin==true"  color="primary">
+        <div>
+          Liste User
+        </div>
+        </mat-toolbar>
+     <div class="pricing-header mx-auto">
+       <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md
+       table-responsive-lg">
+        <thead>
+        <tr>
+        
+        <th scope="col">Name </th>
+        <th scope="col">UserName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role </th>
+        <th scope="col">Image</th>
+         <th>
+            <a class="btn btn-outline-success" >
+              <i class="fa fa-plus-square"></i> Create New</a>
+        </th>
+        </tr>
+        </thead>
+        <tbody>
+    
+    
+        <tr *ngFor="let item of userService.list | paginate: { itemsPerPage: 3, currentPage: p }">
+        
+        <td>{{item.lastName}}</td>
+        <td>{{item.username}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.authorities[0].authority}}</td>
+        <td><a href="#"><img class="card-img-top img-responsive"
+          src = "{{this.userService.host+'/Imgusers/'+item.id}}" 
+          style = "height :100px;width:200px"
+         alt=""></a></td>
+        <td><button class="btn btn-warning btn btn-outline-dark ml-1"  (click) = "selectData(item)">
+          <i class="fa fa-pencil-square-o" ></i></button></td>
+       <td><button class="btn btn-danger btn btn-outline-dark ml-1" (click) = "removeData(item.code)">
+          <i class="fa fa-trash-o"></i></button></td>
+           </tr>
+             </tbody>
+             </table>
+             </div>
+             <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      
+           </div>
+    
+    
+     
+    
+    
+      
     </div>
   </div>
 
 
-
- 
-
+  

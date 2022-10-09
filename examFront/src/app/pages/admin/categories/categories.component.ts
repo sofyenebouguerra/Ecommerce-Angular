@@ -1,7 +1,8 @@
+import { AddProduitComponent } from './../add-produit/add-produit.component';
 import { AddTagToProductComponent } from './../add-tag-to-product/add-tag-to-product.component';
 import { AddProductComponent } from './../add-product/add-product.component';
 import { AddCategoryComponent } from './../add-category/add-category.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
@@ -11,6 +12,8 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
+import { ProduitService } from 'src/app/services/produit.service';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -29,7 +32,7 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private productService: ProductService, private categoryService: CategoryService,
     private route: ActivatedRoute, private dialog: MatDialog, private userService: UserService,
-    private tagService: TagService, private commentService: CommentService) {
+    private tagService: TagService, private commentService: CommentService ,public dialogRef: MatDialogRef<AddProduitComponent>,private matDialog: MatDialog,public crudApi: ProduitService,public fb: FormBuilder) {
     this.route.params.subscribe(
       params => {
         this.idCategory = this.route.snapshot.params['idCategory'];
@@ -74,15 +77,15 @@ export class CategoriesComponent implements OnInit {
       data: { idCategory }
     })
   }
-  deleteProduct(idProduct, idUser) {
+  deleteProduct(productId, idUser) {
     if (confirm("Are you sure")) {
-      this.productService.deleteProduct(idProduct).subscribe(() => {
+      this.productService.deleteProduct(productId).subscribe(() => {
         window.location.replace(`/profile/${idUser}`)
       })
     }
   }
   editProduct(idProduct) {
-    this.dialog.open(AddProductComponent, {
+    this.dialog.open(AddProduitComponent, {
       data: { idProduct }
     })
   }
@@ -91,4 +94,11 @@ export class CategoriesComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  selectData(item: Product) {
+    this.crudApi.choixmenu = "M";
+    this.crudApi.dataForm = this.fb.group(Object.assign({}, item));
+    this.matDialog.open(AddProduitComponent);
+  }
+
 }

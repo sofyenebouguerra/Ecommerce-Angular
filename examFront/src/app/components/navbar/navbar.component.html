@@ -1,26 +1,93 @@
 
-    <mat-toolbar color="primary">
-     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu_book</mat-icon>
-    </button>
-    <span>Examprtal</span>
-    <button mat-button [matMenuTriggerFor]="menu">Menu <i class="fas fa-caret-down"></i></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let cat of categories"
-        [routerLink]="['/dsiplay-category/', cat.id]">{{cat.name}}</button>
-    </mat-menu>
-    <a type="button"  *ngIf="user" [routerLink]="['/profile/', user.id]">
-      Profile {{user.username}} {{user.id}} <i class="fas fa-user"></i>
-    </a>
-    <span class="example-spacer"></span>
-    <a *ngIf="!isLoggedIn"
-    [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">Login
-    </a>
-    <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with share icon">Register
-    </a>
-    <a *ngIf="isLoggedIn" (click)="logout()" mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with share icon">Logout </a>
-   <button routerLink="/admin/profilee"  *ngIf="isLoggedIn && user "  class="example-icon favorite-icon  ml20" mat-button aria-label="Example icon-button with share icon">{{user.username}} {{user.id}}
-  </button>
-  </mat-toolbar>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="language">
+            <ul>
+              <li (click)="drop('language')">
+                English <i class="fa fa-caret-down"></i>
+                <div class="dropdown" *ngIf="id === 'language'">
+                  <ul>
+                    <li>
+                      English
+                    </li>
+                    <li>
+                    Arabic
+                  </li>
+                  </ul>
+                </div>
+              </li>
+              <li (click)="drop('currency')" >
+                USD <i class="fa fa-caret-down"></i>
+                <div class="dropdown" *ngIf="id === 'currency'">
+                  <ul>
+                    <li>
+                      USD
+                    </li>
+                    <li>
+                    EUR
+                  </li>
+                  <li>
+                    GBR
+                  </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+            <a mat-button [matMenuTriggerFor]="menu">Menu <i class="fas fa-caret-down"></i></a>
+       
+            <mat-menu #menu="matMenu" >
+              <a mat-menu-item *ngFor="let cat of categories"
+                [routerLink]="['/dsiplay-category/', cat.id]">{{cat.name}}</a>
+            </mat-menu>
+              </li>
+            </ul>
+        </div>
+        </div>
+     
+        <div class="col-md-8 ">
+          <div class="social-menu">
+            <ul>
+              <li>
+                <a *ngIf="isLoggedIn" (click)=" ShowCart(user.id)" href="javascript:void(0)">
+                  <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>{{total}}TND
+                </a>
+              </li>
+              <li>
+                <a  [routerLink]="'/dashboard'" ><i class="fa fa-home" aria-hidden="true" class="home"></i>Home
+                </a>
+              </li>
+              <li>
+                <a *ngIf="!isLoggedIn"
+                [routerLink]="'/login'" href="javascript:void(0)" class="login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login
+                </a>
+              </li>
+              <li>
+                <a *ngIf="isLoggedIn" (click)="logout()"  href="javascript:void(0)" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout
+                </a>
+              </li>
+              <li>
+                <a *ngIf="!isLoggedIn"  [routerLink]="'/signup'"   href="javascript:void(0)" class="register"><i class="fa fa-registered" aria-hidden="true"></i>
+                Register
+                </a>
+              </li>
+  
+                  <a  *ngIf="isLoggedIn && user " [routerLink]="['/profile/', user.id]"    class="nav-profile-img">
+                    <img src= "{{this.userService.host+'/Imgusers/'+user.id}}" alt="User">
+                  </a>
+                
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
 
   

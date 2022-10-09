@@ -8,37 +8,91 @@
             </div>
           <h1 class="text-center">Register Here</h1>
         
-          <form (ngSubmit)="formSubmit()">
+          <form [formGroup]="this.userService.formData" (ngSubmit)="onSubmit()">
          
                 <mat-form-field class="full-width" appearance="outline">
                   <mat-label>User Name</mat-label>
-                  <input [(ngModel)]="user.username" name="username"  matInput placeholder="Enter here" required>
+                  <input  class="form-control form-control-user" formControlName="username" id="username" name="username"  matInput placeholder="User Name" required>
                   <mat-hint>user must be unique</mat-hint>
+                </mat-form-field>
+               
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input class="form-control form-control-user" formControlName="firstName" id="firstName" name="firstName"  matInput placeholder="First tName" required>
                 </mat-form-field>
 
                 <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input  class="form-control form-control-user" formControlName="lastName" id="lastName" name="lastName"  matInput placeholder="Last Name" required>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width" appearance="outline">
                     <mat-label>User password</mat-label>
-                    <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter here" required>
+                    <input class="form-control form-control-user" formControlName="password" id="password" name="password" type="password" matInput placeholder="Password" required>
                   </mat-form-field>
 
+         
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input [(ngModel)]="user.lastName" name="lastname"  matInput placeholder="Enter here" required>
+                    <mat-label>Name On Card</mat-label>
+                    <input class="form-control form-control-user" formControlName="nameOnCard" id="nameOnCard" name="nameOnCard"  matInput placeholder=" Name ON Card" required>
                   </mat-form-field>
 
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Email Address</mat-label>
-                    <input  [(ngModel)]="user.email" name="email"  type="email" matInput placeholder="Enter here" required>
+                    <input  class="form-control form-control-user" id="email" formControlName="email"  type="email" matInput placeholder=" Email" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input  class="form-control form-control-user" id="address" formControlName="address" name="address"  type="address" matInput placeholder=" Address" required>
                   </mat-form-field>
 
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Phone Number</mat-label>
-                    <input [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Enter here" required>
+                    <input class="form-control form-control-user" id="phone" formControlName="phone" name="phone" type="number" matInput placeholder="Phone" required>
                   </mat-form-field>
 
-                  <div class="container text-center">
-                      <button type="submit" mat-raised-button color="primary">Register</button>
-                      <button style="margin-left: 20px" mat-raised-button color="accent">Clear</button>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Card Validation Value</mat-label>
+                    <input class="form-control form-control-user" id="cvv" formControlName="cvv"  name="cvv" type="number" matInput placeholder="Card Number" required>
+                  </mat-form-field>
+                  
+                  <div class="form-group" style="margin-top:10px;">
+                    <label style="color: blue;">Choose photo profile </label>
+                    <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                    <img [src]="imgURL" height="200" *ngIf="imgURL">
+                </div>
+
+                  <div class="row m-t-25 text-left" >
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <div class="checkbox-fade fade-in-primary">
+                            <label>
+                               
+                         <span class="pull-left"> <input type="checkbox"  id="acceptTerms"
+                             class="form-check-input" /></span>
+
+                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                <span class="text-inverse">I read and accept <a href="#">Terms &amp; Conditions.</a></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:20px;">
+                        <div class="checkbox-fade fade-in-primary">
+                            <label>
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                <span class="text-inverse">Send me the <a href="#!">Newsletter</a> weekly.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                  
+                  <div  class="form-actions" class="container text-center">
+                      <button  mat-raised-button color="primary">Register</button>
+                      <button style="margin-left: 20px" mat-raised-button color="accent" (click)="onReset()">Clear</button>
                   </div>
          
           </form>
@@ -47,3 +101,5 @@
       </div>
     </div>
   </div>
+
+  

@@ -6,7 +6,7 @@
             <h2><span>Best</span> Seller</h2>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" >
                 <div class="card">
                     <div class="card-main">
                         <div class="discount">-9%</div>
@@ -30,7 +30,37 @@
                                 <li><a href=""><i class="fa fa-search"></i></a></li>
                             </ul>
                         </div>
+                        <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
+                        <div >
+                        <div class="row" *ngIf="isLoggedIn && user">
+                          <div class="shop">
+                          <div class="text-center" *ngIf="!isProductSelected()" style="margin-right: 80px ;margin-left: 40px;">
+                            <input type="number" min="0" max="10" class="form-control"  />
+                          </div>
+                          <div class="ss">
+                          <div *ngIf="!isProductSelected()">
+                            <a style="margin-top: 15px; margin-left: 60px;"  title="Add To Cart"  href="javascript:void(0);" class="cart-btn"><i class="fa fa-shopping-cart" ></i>Add To Cart</a>
+                          </div>
+                          </div>
+                        </div>
+                          <div class="col-12" *ngIf="isProductSelected()">
+                            <button class="btn btn-danger btn-block active" (click)="removeFromCart()" style="margin-right: 60px ;margin-left: 60px;">
+                              Remove From Cart
+                            </button>
+                          </div>
+                       
+                        
+                        </div>
+                        <div class="login" *ngIf="!isLoggedIn">
+                            <button type="button" class="cart-btnL"
+                               (click)="login()"><i class="fa fa-sign-in" aria-hidden="true"></i>Please login to buy product</button> 
+                         </div>
                     </div>
+                    
+                    </div>
+                    
+                    
+                    
                     <div class="content">
                         <a href="javascript:void(0);">Incidid Tongue Bar</a>
                         <div class="rating">
@@ -80,8 +110,7 @@
                       </div>
                       <div class="ss">
                       <div *ngIf="!isProductSelected(order.product)">
-                        <button title="Add To Cart" class="fa fa-cart-plus fa-2x " aria-hidden="true" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
-                        </button>
+                        <a style="margin-top: 15px; margin-left: 60px;"  title="Add To Cart" (click)="addToCart(order)" href="javascript:void(0);" class="cart-btn"><i class="fa fa-shopping-cart" ></i>Add To Cart</a>
                       </div>
                       </div>
                     </div>
@@ -92,12 +121,10 @@
                       </div>
                     
                     </div>
-                    <div class="logg">
-                    <div *ngIf="!isLoggedIn">
-                        <p class="text-center"><strong>Please login to buy product</strong>
-                          <button (click)="login()"> <i class="fa fa-user" aria-hidden="true"></i></button> </p>
-                    </div>
-                    </div>
+                    <div class="login" *ngIf="!isLoggedIn">
+                         <button type="button" class="cart-btnL"
+                            (click)="login()"><i class="fa fa-sign-in" aria-hidden="true"></i>Please login to buy product</button> 
+                      </div>
                     <div class="content">
                         <a href="javascript:void(0);">{{ order.product.productName }}</a>
                         <div class="rating">
@@ -111,76 +138,7 @@
                     </div>
                 </div>
             </div>
-          <!--- <div class="col-md-3">
-                <div class="card">
-                    <div class="card-main">
-                        <div class="discount">-8%</div>
-                        <div class="label label-green">Pre-order</div>
-                        <div class="product-container">
-                            <div class="p"><img src="../assets/memeT/1n.jpg" alt="Product"></div>
-                            <div class="p"><img src="../assets/memeT/3n.jpg" alt="Product"></div>
-                            <div class="p"><img src="../assets/memeT/4n.jpg" alt="Product"></div>
-                        </div>
-                        <div class="image">
-                            <img src="../assets/memeT/f2.jpg" alt="Product">
-                        </div>
-                        <div class="cart-line"></div>
-                        <div class="cart-item">
-                            <ul>
-                                <li><a href=""><i class="fa fa-shopping-basket"></i></a></li>
-                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                <li><a href=""><i class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <a href="javascript:void(0);">Incidid Tongue Bar</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p><span class="money">$81.00</span><span class="price-old">$89.00</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-main">
-                        <div class="discount">-6%</div>
-                        <div class="label label-green">Pre-order</div>
-                        <div class="product-container">
-                            <div class="p"><img src="../assets/memeT/1n.jpg" alt="Product"></div>
-                            <div class="p"><img src="../assets/memeT/3n.jpg" alt="Product"></div>
-                            <div class="p"><img src="../assets/memeT/4n.jpg" alt="Product"></div>
-                        </div>
-                        <div class="image">
-                            <img src="../assets/memeT/f4.jpg" alt="Product">
-                        </div>
-                        <div class="cart-line"></div>
-                        <div class="cart-item">
-                            <ul>
-                                <li><a href=""><i class="fa fa-shopping-basket"></i></a></li>
-                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                <li><a href=""><i class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <a href="javascript:void(0);">Incidid Tongue Bar</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p><span class="money">$81.00</span><span class="price-old">$89.00</span></p>
-                    </div>
-                </div>
-            </div>--> 
+      
         </div>
     </div>
 </section>

@@ -1,11 +1,13 @@
+import { SignupComponent } from './../pages/signup/signup.component';
+import { AddProduitComponent } from './../pages/admin/add-produit/add-produit.component';
 import { ProductService } from './../services/product.service';
 import { LoginService } from './../services/login.service';
 import { AddProductComponent } from './../pages/admin/add-product/add-product.component';
 
 
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -16,6 +18,8 @@ import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category.service';
 import { AddCategoryComponent } from '../pages/admin/add-category/add-category.component';
 import { AddTagComponent } from '../pages/admin/add-tag/add-tag.component';
+import { FormControl, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -29,8 +33,13 @@ export class ProfileComponent implements OnInit {
   carts: Cart[];
   cartLength = 0;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private dialog: MatDialog,
-    private categoryService: CategoryService, private cartService: CartService,private  productService: ProductService,private router: Router,private login:LoginService) {
+  p: number = 1;
+  control: FormControl = new FormControl('');
+  constructor(public userService: UserService, private route: ActivatedRoute, private dialog: MatDialog,
+    private categoryService: CategoryService, private cartService: CartService,private  productService: ProductService,private router: Router,private login:LoginService,public toastr: ToastrService,
+   public fb: FormBuilder,private matDialog: MatDialog,
+   @Inject(MAT_DIALOG_DATA) public data: any,
+   public dialogRef:MatDialogRef<SignupComponent>) {
     this.route.params.subscribe(
       params => {
         this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
@@ -50,7 +59,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user=this.login.getUser();
+
+      this.user=this.login.getUser();
+     this. getData()
   }
   
   logout(id: number) {
@@ -64,7 +75,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addProduct(idCategory) {
-    this.dialog.open(AddProductComponent, {
+    this.dialog.open(AddProduitComponent, {
       data: { idCategory }
     })
   }
@@ -73,7 +84,11 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(AddTagComponent);
   }
   updateProfile(id:any) {
-    this.dialog.open(UpdateProfileComponent);
+
+    this.dialog.open(SignupComponent, {
+      data: { id }
+    })
+    //this.router.navigate(['/signup/',id]);
   }
   deleteCart(idPro, idUser) {
     if (confirm('Are you sure')) {
@@ -84,5 +99,36 @@ export class ProfileComponent implements OnInit {
   }
   sangleProduct(name) {
     this.router.navigate(['/puy/product/', name]);
+  }
+
+  getData() {
+    this.userService.findAllUsers().subscribe(
+      data =>{this.userService.list = data;}
+     );
+   
+  }
+  
+ 
+  removeData(idUser: number) {
+    if (window.confirm('Are sure you want to delete this User ?')) {
+    this.userService.deleteUser(idUser)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.toastr.warning(' data successfully deleted!'); 
+          this.getData();
+        },
+        error => console.log(error));
+  }
+  }
+  selectData(item : User) {
+    this.userService.choixmenu = "M";
+    this.userService.formData = this.fb.group(Object.assign({},item));
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width="50%";
+    
+    this.matDialog.open(SignupComponent, dialogConfig);
   }
 }

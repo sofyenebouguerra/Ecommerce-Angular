@@ -1,3 +1,4 @@
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
@@ -24,10 +25,16 @@ import { DisplayCategoryComponent } from './pages/display-category/display-categ
 import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
+import { User } from './models/Modal';
 
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
+  
+{
+  path: 'carts/:id',
+  component: SidebarComponent
+},
   {  path: 'dashboard',
    component: DashboarddComponent,
 },
@@ -55,6 +62,14 @@ component: FooterComponent,
 {
   path: 'puy/product/:name',
   component: SangleProductComponent
+},
+{
+  path: 'signup/:id',
+  component: SignupComponent
+},
+{
+  path: 'listuser',
+  component: UserDashboardComponent
 },
 {
   path: 'profile/:id',

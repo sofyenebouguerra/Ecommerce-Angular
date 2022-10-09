@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/Modal';
 import baseUrl from './helper';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 const USERNAME_KEY = 'USERNAME';
 
@@ -11,13 +12,26 @@ const USERNAME_KEY = 'USERNAME';
   providedIn: 'root'
 })
 export class UserService {
-
+  private baseUrl = 'http://localhost:8086/user';
+  choixmenu : string  = 'A';
+  host: string = 'http://localhost:8086/user';
+  public formData:  FormGroup; 
+  list:  any=[];
   constructor(private http:HttpClient) { }
 
+
+
+  createData(info: Object): Observable<Object> {
+  
+    return this.http.post(`${this.baseUrl}/users`, info);
+  }
+  updatedata(id: number, value: any): Observable<Object> {
+    this.choixmenu  = 'B';
+    return this.http.put(`${this.baseUrl}/editUserImag${id}`, value);
+  }
   public addUser(user:any){
     return this.http.post(`${baseUrl}/user/`,user);
   }
-
 
   addUserr(user: User): Observable<User> {
     return this.http.post<User>('http://localhost:8086/user/addUser', user);

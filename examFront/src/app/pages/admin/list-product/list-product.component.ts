@@ -96,9 +96,9 @@ export class ListProductComponent implements OnInit {
    
   }
 
-  removeData(id:number) {
+  removeData(productId:number) {
     if (window.confirm('Are sure you want to delete this Article ?')) {
-      this.crudApi.deleteData(id)
+      this.crudApi.deleteData(productId)
         .subscribe(
           data => {
             console.log(data);
@@ -109,6 +109,11 @@ export class ListProductComponent implements OnInit {
           error => console.log(error));
     }
   }
+
+ 
+
+
+
   selectData(item: Product) {
     this.crudApi.choixmenu = "M";
     this.crudApi.dataForm = this.fb.group(Object.assign({}, item));

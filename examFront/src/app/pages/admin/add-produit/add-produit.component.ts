@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators }
 import { Router } from '@angular/router';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/Modal';
 
 @Component({
   selector: 'app-add-produit',
@@ -23,18 +25,20 @@ export class AddProduitComponent implements OnInit {
   public message: string;
   codef : string;
   name : string;
+  product: Product = {} as Product;
+  progressBar = false;
+
   
-  constructor(public crudApi: ProduitService, public fb: FormBuilder, public toastr:ToastrService,
+  constructor(public crudApi: ProduitService,public productService:ProductService , public fb: FormBuilder, public toastr:ToastrService,
   
-    private router: Router, @Inject(MAT_DIALOG_DATA) public data,
+    private router: Router, @Inject(MAT_DIALOG_DATA) public data:any,
     public dialogRef: MatDialogRef<AddProduitComponent>,
 
   ) { }
   get f() { return this.crudApi.dataForm.controls; }
   ngOnInit() {
     if (this.crudApi.choixmenu == "A") { this.infoForm() };
-   
-    
+
    // this.codef = localStorage.getItem('codef');
     //this.f['codef'].setValue(this.codef);
     
@@ -74,29 +78,32 @@ export class AddProduitComponent implements OnInit {
     const product = this.crudApi.dataForm.value;
     formData.append('product', JSON.stringify(product));
     formData.append('file', this.userFile);
-    this.crudApi.createData(formData).subscribe(data => {
+    this.crudApi.createDataToCateg(formData, this.data.idCategory).subscribe(data => {
       this.dialogRef.close();
      
       this.crudApi.getAll().subscribe(
         response =>{this.crudApi.list = response;}
        );
     
-     
-      this.router.navigate(['/list-proAr']);
+       window.location.reload();
     });
 
 
   }
+
+
+
   updateData() {
-    this.crudApi.updatedata(this.crudApi.dataForm.value).
+    this.crudApi.editProduct( this.crudApi.dataForm.value,this.crudApi.dataForm.value.productId).
       subscribe(data => {
         this.dialogRef.close();
         this.crudApi.getAll().subscribe(
           response =>{this.crudApi.list = response;}
          );
-        this.router.navigate(['/list-proAr']);
+     window.location.reload();
       });
   }
+
 
   onSelectFile(event) {
     if (event.target.files.length > 0) {

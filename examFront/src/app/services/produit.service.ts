@@ -19,7 +19,7 @@ export class ProduitService {
   list: Product[];
   public dataForm: FormGroup;
   constructor(private http: HttpClient,private parametreService:ParametreService) { }
-  getData(productId: number): Observable<Object> {
+  getData(productId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/GetOne/${productId}`);
   }
 
@@ -35,12 +35,21 @@ export class ProduitService {
     return this.http.post(`${this.baseUrl}/prodIma`, formData);
   }
 
+  createDataToCateg(formData: FormData, idCategory: number): Observable<any> {
+
+    return this.http.post(`${this.baseUrl}/addProductToCategory/${idCategory}`, formData);
+  }
+
+
   updatedata( value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/UpdatePro`, value);
   }
+  editProduct(product: Product, productId: number): Observable<Product> {
+    return this.http.put<Product>(`http://localhost:8086/product/editProduct/${productId}`, product);
+  }
 
-  deleteData(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  deleteData(productId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/DelPro/${productId}`, { responseType: 'text' });
   }
 
   getAll(): Observable<any> {
