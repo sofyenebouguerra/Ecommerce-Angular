@@ -12,7 +12,6 @@ import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
 
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
-import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,14 +28,16 @@ import { ShowCartComponent } from './pages/admin/show-cart/show-cart.component';
 
 
 const routes: Routes = [
-  { path:'',component:HomeComponent,pathMatch:'full'},
+  { path:'',component:DashboarddComponent,pathMatch:'full'},
+  {
+    path: 'dashboard',
+    component: DashboarddComponent
+  },
   {
   path: 'carts/:id',
   component: ShowCartComponent
 },
-  {  path: 'dashboard',
-   component: DashboarddComponent,
-},
+
 {  path: 'affpro',
 component: ProductsComponent,
 },
@@ -81,12 +82,8 @@ component: FooterComponent,
   { path:'list-proAr',component:ListProductComponent,pathMatch:'full'},
   { path:'signup',component:SignupComponent,pathMatch:'full'},
   { path:'login',component:LoginComponent,pathMatch:'full'},
-  { path:'admin',component:DashboardComponent,children:[
-    {
-      path:'',component:HomeComponent
-    }, ] }
- 
-];
+  ]
+    
 
 @NgModule({
   imports: [CommonModule,RouterModule.forRoot(routes)],

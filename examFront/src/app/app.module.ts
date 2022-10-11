@@ -16,7 +16,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -70,7 +69,6 @@ import { ShowCartComponent } from './pages/admin/show-cart/show-cart.component';
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    HomeComponent,
     DashboardComponent,
     AddNewProductComponent,
     DragDirective,
