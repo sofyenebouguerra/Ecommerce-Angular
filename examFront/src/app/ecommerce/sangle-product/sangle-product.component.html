@@ -131,9 +131,8 @@
   
     <div class="container-comment" *ngFor="let item of comments">
      
-        <img src= "{{this.userService.host+'/Imgusers/'+user.id}}" alt="User" style="width:90px">
+        <img src= "{{this.userService.host+'/Imguserss/'+item.addedBy}}" alt="User" style="width:90px">
       
-        
       <p><span>{{item.addedBy}}</span> {{item.addedAt | date}}</p>
       <p><strong>{{item.title}}: </strong> {{item.message}}</p>
     </div>

@@ -232,7 +232,9 @@ export class ProductService {
           alignment: 'center'
         }
       }
+      
     };
+   
   }
 
 
@@ -268,6 +270,7 @@ export class ProductService {
         ]
       }
     };
+    this.onselectParametre(2);
   }
 
 

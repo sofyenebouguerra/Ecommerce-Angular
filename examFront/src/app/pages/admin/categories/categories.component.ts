@@ -2,8 +2,8 @@
 import { AddProduitComponent } from './../add-produit/add-produit.component';
 import { AddTagToProductComponent } from './../add-tag-to-product/add-tag-to-product.component';
 import { AddCategoryComponent } from './../add-category/add-category.component';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { Category, User, Tag } from 'src/app/models/Modal';
@@ -12,7 +12,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -35,7 +35,8 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private productService: ProductService, private categoryService: CategoryService,
     private route: ActivatedRoute, private dialog: MatDialog, private userService: UserService,
-    private tagService: TagService, private commentService: CommentService ,public dialogRef: MatDialogRef<AddProduitComponent>,private matDialog: MatDialog,public fb: FormBuilder, public toastr: ToastrService) {
+    private tagService: TagService, private commentService: CommentService ,public dialogRef: MatDialogRef<AddProduitComponent>,private matDialog: MatDialog,public fb: FormBuilder, public toastr: ToastrService, @Inject(MAT_DIALOG_DATA) public data: any,
+    ) {
     this.route.params.subscribe(
       params => {
         this.idCategory = this.route.snapshot.params['idCategory'];
@@ -56,6 +57,19 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getData()
+  }
+
+  getData() {
+    
+    this.productService.getAll().subscribe(
+      response => {
+        
+        this.productService.list = response;
+        console.log(response);
+      }
+    );
+
   }
 
   addTag(idProduct) {
@@ -123,11 +137,10 @@ export class CategoriesComponent implements OnInit {
   }
   generatePdf()
 {
-  
  const document = this.productService.getDocument();
  alert("Are you sure");
  pdfMake.createPdf(document).open(); 
 
 }
-
+  
 }

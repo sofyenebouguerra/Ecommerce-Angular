@@ -59,8 +59,9 @@ export class ProfileComponent implements OnInit {
   }
   
   logout(id: number) {
-    window.location.replace("/dashboard");
-    this.userService.signOut();
+     this.login.logout();
+    this.login.loginStatusSubject.next(false);
+    window.location.reload;
   }
   addCategory(idUser: number) {
     this.dialog.open(AddCategoryComponent, {

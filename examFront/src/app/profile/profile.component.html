@@ -37,6 +37,7 @@
     </div>
     <div class="col-lg-8" >
       <router-outlet></router-outlet>
+      <div *ngIf="user.admin==true">
       <mat-toolbar *ngIf="user.admin==true"  color="primary">
         <div>
           Liste User
@@ -84,7 +85,7 @@
              <pagination-controls (pageChange)="p = $event"></pagination-controls>
       
            </div>
-    
+    </div>
     
      
     

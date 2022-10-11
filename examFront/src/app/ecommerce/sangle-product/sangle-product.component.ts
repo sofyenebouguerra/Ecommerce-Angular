@@ -30,7 +30,8 @@ export class SangleProductComponent implements OnInit {
   products: Product[] = [];
   tags: Tag[] = [];
   comment: Comment = {} as Comment;
-  comments: Comment[];
+  comments: any[];
+  commentss:any[];
   cartExist: Cart = {} as Cart;
   cart: Cart = {} as Cart;
   selectedProductOrder: ProductOrder;

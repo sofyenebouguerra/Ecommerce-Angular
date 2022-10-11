@@ -77,7 +77,7 @@ component: FooterComponent,
 
 },
 
- { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},
+  { path:'add-proAr',component:AddProduitComponent,pathMatch:'full'},
   { path:'list-proAr',component:ListProductComponent,pathMatch:'full'},
   { path:'signup',component:SignupComponent,pathMatch:'full'},
   { path:'login',component:LoginComponent,pathMatch:'full'},

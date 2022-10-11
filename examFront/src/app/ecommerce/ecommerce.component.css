@@ -11,6 +11,95 @@
     width: 50%;
     margin: 0 auto;
 }
+.containersT{
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+.testimonial{
+    background-image: url(src\assets\6n.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    padding:20px 0;
+    position: relative;
+}
+.testimonial-image{
+    width: 110px;
+    height:110px;
+    margin:0 auto;
+}
+.testimonial-image img{
+    border-radius:50%;
+    border:5px solid rgba(255, 255, 255, .1);
+    width:100%;
+    height:100%;
+}
+.testimonial-content h2{
+    font-size: 16px;
+    color:#ff4000;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin:9px 0 .5rem;
+    line-height:1.2px;
+    text-align: center;
+}
+.testimonial-content h3{
+    font-size: 15px;
+    color: #fff;
+    line-height: 16px;
+    margin: 8px 0 10px;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+.testimonial-content p{
+    position: relative;
+    margin: 28px 30% 70px 30%;
+    font-style: italic;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 23px;
+
+}
+.testimonial-content p:before{
+content: '\f10d';
+font-family: FontAwesome;
+position: absolute;
+left: -15%;
+top: -50%;
+font-size: 42px;
+color:rgba(255, 255, 255, .1);
+}
+.testimonial-content p:after{
+content: '\f10e';
+font-family: FontAwesome;
+position: absolute;
+right: -15%;
+bottom:-50%;
+font-size: 42px;
+color:rgba(255, 255, 255, .1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .bets-selling{
     position: relative;
@@ -460,6 +549,163 @@ border: #111;
 
 
 
+.policy{
+    background-image: url(src\assets\policy\bg-policy.jfif); 
+    background-size:  cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    height: 380px;
+    padding: 60px 0;
+    width: 100%;
+    
+    }
+    .round{
+        padding:23px;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 834x;
+        background: rgba(255, 255, 255, .2);
+        transition:all .3s ease;
+        margin:0 auto;
+        position:relative;
+    }
+    .round-icon{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        color:#fff;
+    }
+    .policy-card h2{
+    transition: all .3s ease;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 12px 0 5px;
+    }
+    .policy-card p {
+        color:#dbdbdb;
+        font-style: italic;
+    }
+    .policy-card:hover .round{
+        background: #ff4000;
+        cursor:pointer;
+    }
+    .policy-card:hover h2{
+        background: #ff4000;
+        cursor:pointer;
+    }
+    .policy-product{
+        padding:60px 0;
+        background: #eee;
+    }
+    .policy-p-card{
+        background: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        border-bottom: 1px solid #a8a8a8;
+        position: relative;
+        top: -10px;
+    }
+    .date{
+        position:absolute;
+        top:0;
+        left:30px;
+        z-index:2;
+        background: #ff4000;
+        padding:15px 10px;
+    
+    text-align: center;
+    border-radius: 0 0 4px 4px;}
+    .date h3{
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;
+        display: block;
+        margin: 0;
+        padding:0;
+    
+    }
+    .date h4{
+        color:#eee;
+        margin:0;
+        padding: 0;
+        font-size: 14px;
+    }
+    .policy-img{
+        width: 85%;
+        height: 300px;
+        overflow: hidden;
+    }
+    .policy-img img{
+        width:100%;
+        height:100%;
+        transition: all .3s ease;
+    }
+    .policy-img img:hover{
+     transform: scale(1.2);
+    
+    }
+    .policy-p-card h2{
+        text-transform:capitalize;
+        line-height:  24px;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 18px 0 10px;
+        cursor:pointer;
+        transition:all .3s ease;
+    }
+    .policy-p-card h2:hover{
+        color:#ff4000
+    }
+    .policy-p-card p{
+        color:#777;
+        line-height: 21px;
+        font-size: 14px;
+        transition: all .3s ease;
+        font-weight: 500;
+    }
+    .read-more{
+        color:#fff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 14px 0;
+        display: block;
+        background: #333;
+        text-align: center;
+        text-decoration: none;
+        transition:all .3s ease;
+    
+    
+    }
+    .read-more i{
+        margin-left: 4px;
+    
+    }
+    .read-more:hover{
+        background: #ff4000;
+        color: #fff;
+    }
+    .read-more:hover i{
+        margin-left:6px;
+    }
+    
+    
+    
+    
+
+
+.banner  {
+
+}
+
+.banner img{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
 
 
 
