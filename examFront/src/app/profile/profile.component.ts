@@ -2,15 +2,9 @@ import { SignupComponent } from './../pages/signup/signup.component';
 import { AddProduitComponent } from './../pages/admin/add-produit/add-produit.component';
 import { ProductService } from './../services/product.service';
 import { LoginService } from './../services/login.service';
-import { AddProductComponent } from './../pages/admin/add-product/add-product.component';
-
-
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { Component, OnInit, Inject } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 import { Cart, Category, User } from '../models/Modal';
 import { UserService } from '../services/user.service';
@@ -85,7 +79,7 @@ export class ProfileComponent implements OnInit {
   }
   updateProfile(id:any) {
 
-    this.dialog.open(SignupComponent, {
+    this.dialog.open(UpdateProfileComponent, {
       data: { id }
     })
     //this.router.navigate(['/signup/',id]);
@@ -126,7 +120,7 @@ export class ProfileComponent implements OnInit {
     this.userService.formData = this.fb.group(Object.assign({},item));
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.width="50%";
     
     this.matDialog.open(SignupComponent, dialogConfig);

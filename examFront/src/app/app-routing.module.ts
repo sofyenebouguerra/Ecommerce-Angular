@@ -1,4 +1,5 @@
-import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+
+
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
@@ -6,12 +7,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
 import { AddProduitComponent } from './pages/admin/add-produit/add-produit.component';
 import { ProductResolveService } from './services/product-resolve.service';
-import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
-import { ProfileeComponent } from './pages/profilee/profile.component';
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
-import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -26,14 +25,14 @@ import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
 import { User } from './models/Modal';
+import { ShowCartComponent } from './pages/admin/show-cart/show-cart.component';
 
 
 const routes: Routes = [
   { path:'',component:HomeComponent,pathMatch:'full'},
-  
-{
+  {
   path: 'carts/:id',
-  component: SidebarComponent
+  component: ShowCartComponent
 },
   {  path: 'dashboard',
    component: DashboarddComponent,
@@ -68,10 +67,6 @@ component: FooterComponent,
   component: SignupComponent
 },
 {
-  path: 'listuser',
-  component: UserDashboardComponent
-},
-{
   path: 'profile/:id',
   component: ProfileComponent, children: [
     {
@@ -89,25 +84,7 @@ component: FooterComponent,
   { path:'admin',component:DashboardComponent,children:[
     {
       path:'',component:HomeComponent
-    }, 
-
-    {
-      path:'profilee',component:ProfileeComponent
-    },
-    {
-      path:'add-product',component:AddProduitComponent,resolve:{
-        product:ProductResolveService
-      }
-    },
-
-    {
-      path:'show-product',component:ShowProductDetailComponent
-    },
-
-
-  ] },
-  { path:'user-dashboard',component:UserDashboardComponent},
- 
+    }, ] }
  
 ];
 

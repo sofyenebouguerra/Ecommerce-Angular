@@ -46,7 +46,7 @@ export class ShoppingCartComponent implements OnInit {
   private calculateTotal(products: ProductOrder[]): number {
     let sum = 0;
     products.forEach((value) => {
-      sum += value.product.productActualPrice * value.quantity;
+      sum += value.product.productDiscountPrice * value.quantity;
     });
     return sum + this.priceDelivery;
   }

@@ -5,5 +5,34 @@ img {
     max-height : 150px;
     }
     .full-width{
-        width: 100%;
+        width: 50%;
+       
+    }
+
+    .bootstrap-wrapper{
+        background-image: url(src\assets\backima.png);
+    }
+    .container{
+        background-image: url(src\assets\backima.png);
+    }
+.imB {
+    background-image: url(src\assets\backima.png);
+}
+.mat-card{
+    background-image: url(src\assets\backima.png);
+}
+.imB .containerBB{
+    text-align: center;
+}
+.imB .full-width mat-label{
+    color: aliceblue;
+    }
+.imB .full-width mat-hint{
+        color: aliceblue;
+    }
+.imB .full-width input{
+        color: aliceblue;
+    }
+    .imB .nou label {
+        color: aliceblue;
     }

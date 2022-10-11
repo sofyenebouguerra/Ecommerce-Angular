@@ -9,6 +9,7 @@ export class User {
   email: string;
   nameOnCard: string
 
+
 }
 export interface Cart {
   id: number;

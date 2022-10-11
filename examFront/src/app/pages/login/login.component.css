@@ -1,3 +1,39 @@
 .full-width{
     width:100%;
 }
+.container{
+    background-image: url(src\assets\backima.png);
+    
+}
+.bootstrap-wrapper{
+    background-image: url(src\assets\backima.png);
+}
+.mat-card{
+    background-image: url(src\assets\backima.png);
+}
+
+.containerIM{
+    width:100%;
+    
+}
+.containerIM img{
+    width:100%;
+    height: 30%;
+    max-height:350px ;
+  
+}
+
+.submit .full-width mat-label{
+color: aliceblue;
+}
+.submit .full-width mat-hint{
+    color: aliceblue;
+}
+.submit .full-width input{
+    color: aliceblue;
+}
+.submit .containerB {
+
+   text-align: center;
+
+}

@@ -1,22 +1,21 @@
-import { OrdersComponent } from './../../../ecommerce/orders/orders.component';
-import { User, Category } from './../../../models/Modal';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cart } from 'src/app/models/Modal';
+import { ToastrService } from 'ngx-toastr';
+import { OrdersComponent } from 'src/app/ecommerce/orders/orders.component';
+import { ShoppingCartComponent } from 'src/app/ecommerce/shopping-cart/shopping-cart.component';
+import { User, Category, Cart } from 'src/app/models/Modal';
 import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { ShoppingCartComponent } from 'src/app/ecommerce/shopping-cart/shopping-cart.component';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  selector: 'app-show-cart',
+  templateUrl: './show-cart.component.html',
+  styleUrls: ['./show-cart.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class ShowCartComponent implements OnInit {
   user: User = {} as User;
   categories: Category[];
   carts: Cart[];

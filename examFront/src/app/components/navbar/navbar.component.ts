@@ -1,5 +1,5 @@
+
 import { OrderService } from 'src/app/services/order.service';
-import { SidebarComponent } from './../../pages/admin/sidebar/sidebar.component';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { Category, Item, ITEMS, ProductOrder, ProductOrders, User } from 'src/app/models/Modal';
 import { ShoppingCartComponent } from 'src/app/ecommerce/shopping-cart/shopping-cart.component';
 import { Subscription } from 'rxjs';
+import { ShowCartComponent } from 'src/app/pages/admin/show-cart/show-cart.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -82,7 +83,7 @@ id:any;
 
 
   ShowCart(idUser: number) {
-    this.dialog.open(SidebarComponent, {
+    this.dialog.open(ShowCartComponent, {
       data: { idUser }
     })
   }
@@ -90,7 +91,7 @@ id:any;
   private calculateTotal(products: ProductOrder[]): number {
     let sum = 0;
     products.forEach((value) => {
-      sum += value.product.productActualPrice * value.quantity;
+      sum += value.product.productDiscountPrice * value.quantity;
     });
     return sum + this.priceDelivery;
   }

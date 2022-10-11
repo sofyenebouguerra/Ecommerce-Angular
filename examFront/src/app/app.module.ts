@@ -22,18 +22,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
-import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
-import { ProfileeComponent } from './pages/profilee/profile.component';
+
 import {MatListModule} from '@angular/material/list';
-import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 
 import { AddNewProductComponent } from './pages/admin/add-new-product/add-new-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DragDirective } from './models/drag.directive';
-import { ShowProductDetailComponent } from './pages/admin/show-product-detail/show-product-detail.component';
+
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ShowProDialogComponent } from './pages/admin/show-pro-dialog/show-pro-dialog.component';
+
 import { ToastrModule } from 'ngx-toastr';
 import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -58,12 +56,12 @@ import { MaterialModule } from './material-module';
 import { DisplayCategoryComponent } from './pages/display-category/display-category.component';
 import { DisplayTagComponent } from './pages/display-tag/display-tag.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
-import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { AddTagToProductComponent } from './pages/admin/add-tag-to-product/add-tag-to-product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
+import { ShowCartComponent } from './pages/admin/show-cart/show-cart.component';
 
 @NgModule({
   declarations: [
@@ -74,13 +72,8 @@ import { CategoriesComponent } from './pages/admin/categories/categories.compone
     FooterComponent,
     HomeComponent,
     DashboardComponent,
-    UserDashboardComponent,
-    ProfileeComponent,
-    SidebarComponent,
     AddNewProductComponent,
     DragDirective,
-    ShowProductDetailComponent,
-    ShowProDialogComponent,
     AddProduitComponent,
     ListProductComponent,
     CustompipePipe,
@@ -93,12 +86,12 @@ import { CategoriesComponent } from './pages/admin/categories/categories.compone
     DisplayCategoryComponent,
     DisplayTagComponent,
     AddCategoryComponent,
-    AddProductComponent,
     AddTagComponent,
     AddTagToProductComponent,
     ProfileComponent,
     UpdateProfileComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ShowCartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { ProduitService } from './../../../services/produit.service';
+
 import { Component, OnInit, Inject } from '@angular/core';
 
 
@@ -29,7 +29,7 @@ export class AddProduitComponent implements OnInit {
   progressBar = false;
 
   
-  constructor(public crudApi: ProduitService,public productService:ProductService , public fb: FormBuilder, public toastr:ToastrService,
+  constructor(public crudApi: ProductService,public productService:ProductService , public fb: FormBuilder, public toastr:ToastrService,
   
     private router: Router, @Inject(MAT_DIALOG_DATA) public data:any,
     public dialogRef: MatDialogRef<AddProduitComponent>,

@@ -1,6 +1,6 @@
+
 import { AddProduitComponent } from './../add-produit/add-produit.component';
 import { AddTagToProductComponent } from './../add-tag-to-product/add-tag-to-product.component';
-import { AddProductComponent } from './../add-product/add-product.component';
 import { AddCategoryComponent } from './../add-category/add-category.component';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
@@ -12,9 +12,12 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TagService } from 'src/app/services/tag.service';
 import { UserService } from 'src/app/services/user.service';
-import { ProduitService } from 'src/app/services/produit.service';
 import { FormBuilder } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ParametreService } from 'src/app/services/parametre.service';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-categories',
@@ -32,7 +35,7 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private productService: ProductService, private categoryService: CategoryService,
     private route: ActivatedRoute, private dialog: MatDialog, private userService: UserService,
-    private tagService: TagService, private commentService: CommentService ,public dialogRef: MatDialogRef<AddProduitComponent>,private matDialog: MatDialog,public crudApi: ProduitService,public fb: FormBuilder) {
+    private tagService: TagService, private commentService: CommentService ,public dialogRef: MatDialogRef<AddProduitComponent>,private matDialog: MatDialog,public fb: FormBuilder, public toastr: ToastrService) {
     this.route.params.subscribe(
       params => {
         this.idCategory = this.route.snapshot.params['idCategory'];
@@ -96,9 +99,35 @@ export class CategoriesComponent implements OnInit {
   }
 
   selectData(item: Product) {
-    this.crudApi.choixmenu = "M";
-    this.crudApi.dataForm = this.fb.group(Object.assign({}, item));
+    this.productService.choixmenu = "M";
+    this.productService.dataForm = this.fb.group(Object.assign({}, item));
     this.matDialog.open(AddProduitComponent);
   }
+  exportTPdf() {
+    alert("ok pdf");
+    this.productService.exportToPdf().subscribe(responseMessage =>{
+     this.toastr.warning('Edition faite Avec Success');
+   })
+
+  }
+
+
+
+  exporToExcel() {
+    this.productService.getExcelData().subscribe((responseMessage) => {
+      let file = new Blob([responseMessage], { type: 'application/vnd.ms-excel' });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+    })
+   
+  }
+  generatePdf()
+{
+  
+ const document = this.productService.getDocument();
+ alert("Are you sure");
+ pdfMake.createPdf(document).open(); 
+
+}
 
 }

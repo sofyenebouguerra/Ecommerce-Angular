@@ -1,7 +1,0 @@
-<mat-grid-list cols="4" rowHeight="2:2">
-    <mat-grid-tile *ngFor="let item of crudApi.list">
-        <!--<img [src]="fileHandle.url" width="200px" height="200px">-->
-        <img src = "{{this.crudApi.host+'/Imgproduct/'+item.productId}}" width="200px" height="200px" >
-    </mat-grid-tile>
-</mat-grid-list>
-<h1>I think that will be work</h1>

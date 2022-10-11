@@ -1,3 +1,5 @@
+import { ProductService } from 'src/app/services/product.service';
+
 import { AddProduitComponent } from './../add-produit/add-produit.component';
 
 import { Component, OnInit, Inject } from '@angular/core';
@@ -8,7 +10,7 @@ import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators }
   from '@angular/forms';
-import { ProduitService } from 'src/app/services/produit.service';
+
 import { Product } from 'src/app/models/product.model';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -25,7 +27,7 @@ export class ListProductComponent implements OnInit {
 
   codef: number = 0;
   control: FormControl = new FormControl('');
-  constructor(public crudApi: ProduitService, public toastr: ToastrService,
+  constructor(public crudApi: ProductService, public toastr: ToastrService,
     private router: Router, public fb: FormBuilder,
     private matDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -49,7 +51,7 @@ export class ListProductComponent implements OnInit {
     this.crudApi.choixmenu = "A";
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.width = "70%";
     //dialogConfig.data="gdddd";
     this.matDialog.open(AddProduitComponent, dialogConfig);
@@ -81,6 +83,7 @@ export class ListProductComponent implements OnInit {
     alert("ok pdf");
     this.crudApi.exportToPdf().subscribe(responseMessage =>{
      this.toastr.warning('Edition faite Avec Success');
+     
    })
 
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
   isLoggedIn=false;
 
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
-    private productService: ProductService, private userService: UserService,public loginn :LoginService) {
+    private productService: ProductService, private userService: UserService,public loginn :LoginService, private matDialog: MatDialog) {
       this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
         this.user = user;
       });
@@ -124,6 +124,12 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['sangle/product', id]);
   }
   login() {
-    this.dialog.open(LoginComponent);
+   
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = false;
+    dialogConfig.width = "50%";
+    //dialogConfig.data="gdddd";
+    this.matDialog.open(LoginComponent, dialogConfig);
   }
 }

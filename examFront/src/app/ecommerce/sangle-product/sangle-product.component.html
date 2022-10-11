@@ -60,8 +60,8 @@
                   {{order.product.productDescription}}
                 </p>
                 <h3>
-                  <span class="selling-amount">{{order.product.productActualPrice}}</span>
-                  <span class="selling-discount">{{order.product.productDiscountPrice}}</span>
+                  <span class="selling-amount">{{order.product.productDiscountPrice}}</span>
+                  <span class="selling-discount">{{order.product.productActualPrice}}</span>
                 </h3>
                 <div class="selling-button">
                   <a *ngIf="isLoggedIn && !isProductSelected(order.product)" (click)="addToCart(order,  user.id)" href="javascript:void(0);" class="cart-btn"><i class="fa fa-shopping-cart" ></i>Add To Cart</a>
